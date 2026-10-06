@@ -320,17 +320,41 @@
       };
     });
 
+    // موبايل: كاروسيل بالسحب — محطة في الشاشة، والكلام والجرافيك بيظهروا أول ما المحطة توصل
     mm.add('(max-width: 899px), (max-height: 599px)', () => {
-      const sts = parts.map((p) => {
-        const tl = stepIn(p).pause();
-        return ScrollTrigger.create({
-          trigger: p.el, start: 'top 78%', end: 'bottom 22%',
-          onEnter: () => tl.play(),
-          onToggle: (self) => p.el.classList.toggle('is-active', self.isActive),
-        });
-      });
-      parts.forEach((p) => gsap.set(p.media, { clipPath: 'inset(100% 0% 0% 0%)' }));
-      return () => { sts.forEach((s) => s.kill()); parts.forEach((p) => p.el.classList.remove('is-active')); };
+      const track = $('.jr__steps', sec);
+      const now = $('[data-jr-now]', sec);
+      const marks = $('.jr__marks', sec);
+      const played = new Set();
+      const cardIn = (p) => gsap.timeline()
+        .fromTo(p.img, { scale: 1.14 }, { scale: 1, duration: 1.4 }, 0)
+        .fromTo(p.chars, { yPercent: 115 }, { yPercent: 0, duration: 0.9, stagger: 0.022 }, 0.1)
+        .fromTo(p.rest, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.06 }, 0.3)
+        .add(mgIn(p.svg), 0.35);
+      const play = (i) => { if (played.has(i)) return; played.add(i); cardIn(parts[i]); };
+      parts.forEach((p) => { gsap.set(p.chars, { yPercent: 115 }); gsap.set(p.rest, { opacity: 0 }); gsap.set(p.svg, { opacity: 0 }); });
+
+      const step = () => parts[0].el.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 14);
+      let cur = -1, entered = false;
+      const sync = () => {
+        const max = track.scrollWidth - track.clientWidth;
+        fill.style.setProperty('--p', (max > 0 ? track.scrollLeft / max : 0).toFixed(4));
+        const i = Math.min(N - 1, Math.max(0, Math.round(track.scrollLeft / step())));
+        if (i !== cur) { cur = i; setActive(i); if (now) now.textContent = String(i + 1).padStart(2, '0'); if (entered) play(i); }
+      };
+      track.addEventListener('scroll', sync, { passive: true });
+      const go = (e) => {
+        const btn = e.target.closest('[data-go]');
+        if (!btn) return;
+        track.scrollTo({ left: Number(btn.dataset.go) * step(), behavior: 'smooth' });
+      };
+      marks.addEventListener('click', go);
+      const st = ScrollTrigger.create({ trigger: track, start: 'top 80%', once: true, onEnter: () => { entered = true; play(Math.max(cur, 0)); } });
+      sync();
+      return () => {
+        track.removeEventListener('scroll', sync); marks.removeEventListener('click', go); st.kill();
+        parts.forEach((p) => { p.el.classList.remove('is-active'); gsap.set([p.img, ...p.chars, ...p.rest, p.svg], { clearProps: 'all' }); });
+      };
     });
   }
 
@@ -363,8 +387,8 @@
       const tws = rows.map((row) => {
         const d = Number(row.dataset.dir || 1);
         const travel = () => Math.min(over(row), window.innerWidth * 1.4);
-        return gsap.fromTo(row, { x: () => (d > 0 ? 0 : -travel()) }, {
-          x: () => (d > 0 ? -travel() : 0), ease: 'none',
+        return gsap.fromTo(row, { x: () => (d > 0 ? 0 : -over(row)) }, {
+          x: () => (d > 0 ? -travel() : -over(row) + travel()), ease: 'none',
           scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'bottom top', scrub: 0.6, invalidateOnRefresh: true },
         });
       });

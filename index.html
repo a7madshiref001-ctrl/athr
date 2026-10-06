@@ -14,7 +14,7 @@
 <link rel="preload" href="assets/fonts/readex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/journey/hero.webp" as="image">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=4.3">
 <script>
   document.documentElement.classList.replace('no-js','js');
   try{ if(!sessionStorage.getItem('athr-intro')) document.documentElement.classList.add('intro'); }catch(e){}
@@ -281,6 +281,7 @@
         <nav class="jr__rail" aria-label="Journey steps">
           <span class="jr__track" aria-hidden="true"><span class="jr__fill"></span></span>
           <ol class="jr__marks"></ol>
+          <p class="jr__swipe" aria-hidden="true"><span><b data-jr-now>01</b> / 07</span><span>Swipe →</span></p>
         </nav>
       </div>
     </div>
@@ -298,27 +299,30 @@
     <div class="gal" data-gal>
       <div class="gal__stage">
       <div class="gal__row" data-dir="1">
-        <figure class="g"><img src="assets/img/work/d01.webp" alt="Nūr wireless earbuds — minimal product ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d07.webp" alt="Karkadé iced hibiscus can — color-matched ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d03.webp" alt="Layl oud perfume — dark luxury ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d10.webp" alt="Iron House Gym — typographic campaign" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d02.webp" alt="Ward rose mist — quiet-luxury product ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/t1-marsa.webp" alt="Marsa Coffee — iced Spanish latte ad" width="597" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/t2-stack.webp" alt="Stack Burger — Double Trouble ad" width="597" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/t3-sukkar.webp" alt="Sukkar Bakery — Basque cheesecake post" width="597" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d17.webp" alt="Qahwa Kart coffee cart — illustrated ad" width="598" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d06.webp" alt="Ismailawy mango juice — splash ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d01.webp" alt="Nūr wireless earbuds — minimal product ad" width="597" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d03.webp" alt="Layl oud perfume — dark luxury ad" width="598" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d12.webp" alt="Dr. Salma Clinic — editorial service ad" width="598" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d14.webp" alt="Layali Ramadan night market — Arabic type poster" width="598" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d18.webp" alt="Bizra kids savings — concept ad" width="598" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d05.webp" alt="Shams Shield SPF50 — photo manipulation ad" width="598" height="800" loading="lazy" decoding="async"></figure>
       </div>
       <div class="gal__row" data-dir="-1">
-        <figure class="g"><img src="assets/img/work/d08.webp" alt="Sabbahy breakfast box — flat lay" width="598" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d04.webp" alt="Masari metal card — CGI launch visual" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d16.webp" alt="El Zaeem Koshary — retro poster" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g g--wide"><img src="assets/img/work/d19.webp" alt="Mowg North Coast — billboard" width="1433" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d09.webp" alt="Nahla honey — packaging system" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d11.webp" alt="Nile Design Forum — Swiss poster" width="597" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d15.webp" alt="Taallam learning platform — collage poster" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d11.webp" alt="Nile Design Forum — Swiss poster" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d17.webp" alt="Qahwa Kart coffee cart — illustrated ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g g--wide"><img src="assets/img/work/d19.webp" alt="Mowg North Coast — billboard" width="1433" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d02.webp" alt="Ward rose mist — quiet-luxury product ad" width="598" height="800" loading="lazy" decoding="async"></figure>
         <figure class="g"><img src="assets/img/work/d20.webp" alt="Haraka physiotherapy — service post" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d09.webp" alt="Nahla honey — packaging system" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d07.webp" alt="Karkadé iced hibiscus can — color-matched ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d16.webp" alt="El Zaeem Koshary — retro poster" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d08.webp" alt="Sabbahy breakfast box — flat lay" width="598" height="800" loading="lazy" decoding="async"></figure>
+        <figure class="g"><img src="assets/img/work/d10.webp" alt="Iron House Gym — typographic campaign" width="598" height="800" loading="lazy" decoding="async"></figure>
       </div>
       </div>
     </div>
@@ -342,23 +346,23 @@
       <div class="sys" data-sys>
         <a class="sys__item sys__item--lead" href="case-luxury-crop.html" data-cursor="Case">
           <span class="sys__frame"><img src="assets/img/lc-home.webp" alt="Luxury Crop — menu and ordering" width="860" height="1720" loading="lazy" decoding="async" style="view-transition-name: lc-shot"></span>
-          <span class="sys__cap"><span class="sys__name">Luxury Crop</span><span class="tag tag--client"><span class="tag__dot" aria-hidden="true"></span>Client</span></span>
+          <span class="sys__cap"><span class="sys__name">Luxury Crop</span></span>
         </a>
         <a class="sys__item" href="https://glancecoffee.github.io/" target="_blank" rel="noopener" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/glance.webp" alt="Glancé" width="860" height="1720" loading="lazy" decoding="async"></span>
-          <span class="sys__cap"><span class="sys__name">Glancé</span><span class="tag">Concept</span></span>
+          <span class="sys__cap"><span class="sys__name">Glancé</span></span>
         </a>
         <a class="sys__item" href="https://la-rouche.github.io/" target="_blank" rel="noopener" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/larouche.webp" alt="La Rouche" width="860" height="1720" loading="lazy" decoding="async"></span>
-          <span class="sys__cap"><span class="sys__name">La Rouche</span><span class="tag">Concept</span></span>
+          <span class="sys__cap"><span class="sys__name">La Rouche</span></span>
         </a>
         <a class="sys__item" href="https://a7madshiref001-ctrl.github.io/razin-menu/" target="_blank" rel="noopener" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/razin.webp" alt="Razin" width="860" height="1720" loading="lazy" decoding="async"></span>
-          <span class="sys__cap"><span class="sys__name">Razin</span><span class="tag">Concept</span></span>
+          <span class="sys__cap"><span class="sys__name">Razin</span></span>
         </a>
         <a class="sys__item" href="https://a7madshiref001-ctrl.github.io/areeb-menu/" target="_blank" rel="noopener" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/areeb.webp" alt="Areeb" width="860" height="1720" loading="lazy" decoding="async"></span>
-          <span class="sys__cap"><span class="sys__name">Areeb</span><span class="tag">Concept</span></span>
+          <span class="sys__cap"><span class="sys__name">Areeb</span></span>
         </a>
       </div>
     </div>
@@ -402,6 +406,6 @@
 <script src="assets/vendor/DrawSVGPlugin.min.js"></script>
 <script src="assets/vendor/CustomEase.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="assets/js/site.js"></script>
+<script src="assets/js/site.js?v=4.3"></script>
 </body>
 </html>
