@@ -379,3 +379,119 @@ html.motion-off .loader{display:none!important}
   .gal__row{transform:none!important;width:auto;margin:0;overflow-x:auto;padding-inline:var(--gut)}
   ::view-transition-old(root),::view-transition-new(root){animation:none}
 }
+
+/* ==========================================================================
+   v4.3 — غنى بصري: تيكستر · نور · خطوط أعمدة · شرايط كلام · تفاصيل · فراغ أقل
+   ========================================================================== */
+:root{--sec-pad:clamp(104px,16vh,190px)}
+@media (max-width:860px){:root{--sec-pad:clamp(72px,11svh,100px)}}
+body{background:transparent}
+
+/* طبقة الجو (ثابتة ورا كل حاجة): حجر + نور بيتحرك ببطء + خطوط أعمدة */
+.atmo{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.atmo__tex{position:absolute;inset:-8% -2%;background:url(../img/tex/stone.webp) center/cover no-repeat;opacity:.3;filter:grayscale(.35) brightness(.72);transform:translate3d(0,var(--ty,0px),0) scale(1.06);will-change:transform}
+.atmo__tex::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 95% at 50% 35%,transparent 25%,#111 82%)}
+.atmo__glow{position:absolute;inset:-20%;background:radial-gradient(38% 32% at 16% 10%,rgba(247,245,242,.075),transparent 70%),radial-gradient(34% 30% at 86% 82%,rgba(242,74,61,.065),transparent 70%);animation:glow 26s ease-in-out infinite alternate}
+@keyframes glow{to{transform:translate3d(5%,-4%,0) scale(1.1)}}
+.atmo__grid{position:absolute;top:0;bottom:0;left:50%;width:min(100%,calc(var(--container) + var(--gut)*2));transform:translateX(-50%);padding-inline:var(--gut);display:flex;justify-content:space-between}
+.atmo__grid i{width:1px;height:100%;background:linear-gradient(180deg,transparent,rgba(247,245,242,.05) 18%,rgba(247,245,242,.05) 82%,transparent)}
+
+/* شريط التقدّم */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:260;pointer-events:none}
+.progress i{display:block;height:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--p,0))}
+
+/* لابل الأقسام: (02) — Seven stations */
+.shead{display:flex;align-items:center;gap:18px;margin-bottom:clamp(24px,3.5vh,36px)}
+.shead .sec-anchor{margin:0}
+.slabel{display:flex;gap:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cap);white-space:nowrap}
+.slabel span:first-child{color:var(--accent)}
+.slabel--c{justify-content:center;margin-bottom:clamp(28px,4vh,44px)}
+
+/* علامات القص على الصور */
+.ticks{position:absolute;inset:12px;pointer-events:none;z-index:3}
+.ticks i{position:absolute;width:12px;height:12px;border:0 solid rgba(247,245,242,.6)}
+.ticks i:nth-child(1){top:0;left:0;border-top-width:1px;border-left-width:1px}
+.ticks i:nth-child(2){top:0;right:0;border-top-width:1px;border-right-width:1px}
+.ticks i:nth-child(3){bottom:0;left:0;border-bottom-width:1px;border-left-width:1px}
+.ticks i:nth-child(4){bottom:0;right:0;border-bottom-width:1px;border-right-width:1px}
+
+/* الهيرو: الصورة بتميل مع الماوس + ماسات طايرة + كابشن */
+.hero__side{position:relative;margin-top:calc(-36px - 1px);perspective:1200px}
+.hero__media{margin-top:0;will-change:transform}
+.floaters i{position:absolute;width:7px;height:7px}
+.floaters i:nth-child(1){left:-30px;top:16%}
+.floaters i:nth-child(2){right:-24px;top:48%;width:5px;height:5px;background:var(--ink)}
+.floaters i:nth-child(3){left:14%;top:calc(100% + 2px);width:6px;height:6px;background:transparent;border:1px solid rgba(247,245,242,.7)}
+.fig{display:flex;justify-content:space-between;gap:16px;margin-top:18px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cap)}
+.fig span:first-child{color:var(--ink)}
+.hero__foot b{font-weight:400;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* شرايط كلام بتتحرك (بتسرع وتعكس مع السكرول) */
+.marq{position:relative;overflow:hidden;border-block:1px solid var(--line);padding-block:clamp(18px,3vh,30px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq__track{display:flex;width:max-content;will-change:transform}
+.marq__row{display:flex;align-items:center;gap:clamp(22px,2.6vw,44px);padding-right:clamp(22px,2.6vw,44px);font-family:var(--serif);font-style:italic;font-size:clamp(44px,7vw,112px);line-height:1.04;letter-spacing:-.02em;white-space:nowrap;color:var(--ink)}
+.marq__row .m{color:#45423e}
+.marq__row .dm{width:10px;height:10px}
+.marq[data-dir="-1"] .marq__row{font-style:normal;font-size:clamp(34px,5vw,78px);color:#5a5752}
+.marq[data-dir="-1"] .marq__row .m{color:var(--ink)}
+.marq[data-dir="-1"] .marq__row .dm{background:var(--ink-2);width:7px;height:7px}
+
+/* الجملة: باند خرسانة + خط بينزل للرحلة */
+.statement{position:relative;isolation:isolate}
+.statement::before{content:"";position:absolute;inset:0;z-index:-1;background:url(../img/tex/concrete.webp) center/cover;opacity:.22;filter:grayscale(.45);-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 78%,transparent)}
+.connector{position:relative;display:block;width:1px;height:clamp(60px,10vh,110px);margin-top:clamp(36px,6vh,60px);background:var(--line-2);overflow:hidden}
+.connector i{position:absolute;inset:0;background:var(--accent);transform-origin:50% 0;transform:scaleY(var(--p,0))}
+
+/* أرقام ضخمة باهتة */
+.journey__head{position:relative}
+.ghost{position:absolute;right:var(--gut);top:-.2em;font-family:var(--serif);font-size:clamp(150px,24vw,400px);line-height:.8;letter-spacing:-.04em;color:rgba(247,245,242,.04);pointer-events:none;user-select:none}
+.jr__ghost{display:none}
+.journey.is-pinned .jr__ghost{display:block;position:absolute;left:0;right:0;bottom:clamp(84px,13svh,140px);z-index:0;max-width:calc(var(--container) + var(--gut)*2);margin-inline:auto;padding-inline:var(--gut);pointer-events:none}
+.jr__groll{display:inline-flex;flex-direction:column;height:.84em;overflow:hidden;font-family:var(--serif);font-size:clamp(200px,24vw,380px);line-height:.84;letter-spacing:-.04em;color:rgba(247,245,242,.045)}
+.jr__groll span{display:block;height:.84em;transition:transform 1.1s var(--ease);transform:translateY(calc(var(--i,0) * -100%))}
+.journey.is-pinned .stp{z-index:1}
+.journey.is-pinned .jr__stage{background:radial-gradient(42% 58% at 72% 48%,rgba(247,245,242,.06),transparent 72%)}
+
+/* المعرض: نور خفيف ورا الصفوف + اسم التصميم في الهوفر */
+.gal{isolation:isolate}
+.gal::before{content:"";position:absolute;inset:-12% 0;z-index:-1;background:radial-gradient(55% 50% at 50% 50%,rgba(247,245,242,.055),transparent 70%)}
+.g::after{content:attr(data-name);position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:999px;background:rgba(17,17,17,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:10.5px;letter-spacing:.08em;color:var(--ink);opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .5s var(--ease);pointer-events:none}
+.g:hover::after{opacity:1;transform:none}
+
+/* النهاية: خرسانة + شعاع نور + غبار */
+.cta{overflow:hidden;isolation:isolate}
+.cta::before{content:"";position:absolute;inset:0;z-index:-2;background:url(../img/tex/concrete.webp) center/cover;opacity:.18;filter:grayscale(.45);-webkit-mask-image:linear-gradient(180deg,transparent,#000 35%);mask-image:linear-gradient(180deg,transparent,#000 35%)}
+.cta__beam{position:absolute;z-index:-1;top:-25%;right:6%;width:48vw;height:150%;background:linear-gradient(180deg,rgba(247,245,242,.11),rgba(247,245,242,.025) 55%,transparent);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);transform:rotate(-18deg);transform-origin:50% 0;filter:blur(16px);pointer-events:none;animation:beam 10s ease-in-out infinite alternate}
+@keyframes beam{to{opacity:.55;transform:rotate(-13deg)}}
+.dust{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+
+/* الفوتر */
+.foot{background:linear-gradient(180deg,transparent,rgba(0,0,0,.4))}
+.foot__cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-block:clamp(56px,9vh,96px) clamp(16px,3vh,32px)}
+.foot__col p{font-size:13px;color:var(--ink-2);line-height:1.8}
+.foot__col--lead p{margin-top:16px;font-family:var(--serif);font-size:clamp(22px,2vw,30px);line-height:1.15;color:var(--ink)}
+.foot__col .foot__h{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cap);margin-bottom:14px}
+.foot__steps{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:12px;color:var(--ink-2);letter-spacing:.04em}
+.foot__time b{font-weight:400;color:var(--ink);font-variant-numeric:tabular-nums}
+.foot__top{display:inline-flex;gap:8px;margin-top:18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;min-height:44px;align-items:center}
+.foot__top span{transition:transform .5s var(--ease)}
+.foot__top:hover span{transform:translateY(-4px)}
+.foot__dms{display:flex;gap:6px}
+.foot__dms .dm{width:5px;height:5px}
+.foot__giant{padding-top:clamp(24px,5vh,56px)}
+
+@media (max-width:860px){
+  .hero__side{flex:1 1 0;display:flex;flex-direction:column;min-height:clamp(170px,26svh,300px);margin:32px calc(var(--gut)*-1) 0}
+  .hero__media{flex:1 1 0;margin:0;min-height:0}
+  .fig,.floaters{display:none}
+  .ghost{font-size:46vw;top:-.12em}
+  .marq__row{font-size:clamp(38px,11vw,56px)}
+  .marq[data-dir="-1"] .marq__row{font-size:clamp(30px,9vw,44px)}
+  .foot__cols{grid-template-columns:1fr 1fr;row-gap:36px}
+  .foot__col--lead{grid-column:1/-1}
+  .cta__beam{width:90vw;right:-20%}
+}
+@media (prefers-reduced-motion:reduce){.atmo__glow,.cta__beam{animation:none}.dust{display:none}}
+.cta{min-height:84svh}
+@media (max-width:860px){.cta{min-height:78svh}}
+@media (max-width:860px){.hero__grid{align-items:stretch}.hero__side{align-self:stretch}}

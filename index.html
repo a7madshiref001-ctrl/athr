@@ -14,7 +14,7 @@
 <link rel="preload" href="assets/fonts/readex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/img/journey/hero.webp" as="image">
-<link rel="stylesheet" href="assets/css/site.css?v=4.3">
+<link rel="stylesheet" href="assets/css/site.css?v=4.6">
 <script>
   document.documentElement.classList.replace('no-js','js');
   try{ if(!sessionStorage.getItem('athr-intro')) document.documentElement.classList.add('intro'); }catch(e){}
@@ -30,7 +30,9 @@
   <span class="loader__line"></span>
 </div>
 
+<div class="atmo" aria-hidden="true"><span class="atmo__tex"></span><span class="atmo__glow"></span><span class="atmo__grid"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
 <div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i></i></div>
 <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
 
 <a class="skip" href="#main">Skip to content</a>
@@ -73,30 +75,42 @@
         </div>
       </div>
 
-      <figure class="hero__media" data-hero-media>
-        <img src="assets/img/journey/hero.webp" alt="A notebook on a dark desk with a red line connecting seven points" width="1200" height="1500" fetchpriority="high">
-      </figure>
+      <div class="hero__side" data-tilt>
+        <figure class="hero__media" data-hero-media>
+          <img src="assets/img/journey/hero.webp" alt="A notebook on a dark desk with a red line connecting seven points" width="1200" height="1500" fetchpriority="high">
+          <span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        </figure>
+        <span class="floaters" aria-hidden="true"><i class="dm"></i><i class="dm"></i><i class="dm"></i></span>
+        <p class="fig" data-hero-fade><span>Fig. 01</span><span>The plan comes before the post.</span></p>
+      </div>
     </div>
 
     <div class="wrap hero__foot" data-hero-fade>
-      <span>01 → 07</span>
+      <span>01 → 07 · Scroll</span>
       <span class="hero__cue" aria-hidden="true"><i></i></span>
-      <span>Cairo · KSA</span>
+      <span>Cairo <b data-clock>--:--</b></span>
     </div>
   </section>
+
+  <div class="marq" data-marq data-dir="1" aria-hidden="true">
+    <div class="marq__track"><p class="marq__row"><span>Call</span><i class="dm"></i><span class="m">Brand audit</span><i class="dm"></i><span>Market</span><i class="dm"></i><span class="m">Audience</span><i class="dm"></i><span>Plan</span><i class="dm"></i><span class="m">Fix</span><i class="dm"></i><span>Create</span><i class="dm"></i></p><p class="marq__row"><span>Call</span><i class="dm"></i><span class="m">Brand audit</span><i class="dm"></i><span>Market</span><i class="dm"></i><span class="m">Audience</span><i class="dm"></i><span>Plan</span><i class="dm"></i><span class="m">Fix</span><i class="dm"></i><span>Create</span><i class="dm"></i></p></div>
+  </div>
 
   <!-- ============ STATEMENT ============ -->
   <section class="sec statement" aria-label="The idea">
     <div class="wrap statement__in">
+      <p class="slabel slabel--c" data-slabel><span>(01)</span><span>The idea</span></p>
       <p class="statement__text" data-words>Design is the last step. Not the first.</p>
       <p class="ar statement__ar" lang="ar" dir="rtl" data-fade>قبل أي تصميم… لازم نفهم.</p>
+      <span class="connector" aria-hidden="true"><i></i></span>
     </div>
   </section>
 
   <!-- ============ JOURNEY ============ -->
   <section class="journey" id="journey" aria-labelledby="journey-title">
     <div class="wrap journey__head">
-      <span class="sec-anchor" aria-hidden="true"></span>
+      <span class="ghost" aria-hidden="true" data-ghost>07</span>
+      <div class="shead"><span class="sec-anchor" aria-hidden="true"></span><p class="slabel" data-slabel><span>(02)</span><span>Seven stations</span></p></div>
       <div class="journey__headrow">
         <h2 class="h2" id="journey-title" data-chars>The journey.</h2>
         <p class="ar" lang="ar" dir="rtl" data-fade>سبع محطات، بالترتيب.</p>
@@ -105,13 +119,14 @@
 
     <div class="jr" data-journey>
       <div class="jr__stage">
+        <p class="jr__ghost" aria-hidden="true"><span class="jr__groll"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span></span></p>
         <p class="jr__count" aria-hidden="true"><span class="jr__roll"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span></span><span class="jr__of">/ 07</span></p>
 
         <div class="jr__steps">
 
           <!-- 01 · CALL -->
           <article class="stp" data-label="Call">
-            <figure class="stp__media">
+            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <img src="assets/img/journey/s1-call.webp" alt="A hand taking notes beside a phone during a call" width="1200" height="1500" loading="lazy" decoding="async">
               <svg class="mg mg--call" viewBox="0 0 400 500" aria-hidden="true">
                 <text class="mg__tx" x="40" y="338">LISTENING</text>
@@ -130,7 +145,7 @@
 
           <!-- 02 · AUDIT -->
           <article class="stp" data-label="Audit">
-            <figure class="stp__media">
+            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <img src="assets/img/journey/s2-audit.webp" alt="Brand materials laid out on a dark table for review" width="1200" height="1500" loading="lazy" decoding="async">
               <svg class="mg mg--audit" viewBox="0 0 400 500" aria-hidden="true">
                 <text class="mg__tx" x="40" y="322">WEAKNESS</text>
@@ -156,7 +171,7 @@
 
           <!-- 03 · MARKET -->
           <article class="stp" data-label="Market">
-            <figure class="stp__media">
+            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <img src="assets/img/journey/s3-market.webp" alt="Printed competitor posts arranged on a table" width="1200" height="1500" loading="lazy" decoding="async">
               <svg class="mg mg--market" viewBox="0 0 400 500" aria-hidden="true">
                 <path class="mg__l" d="M40 316 V462 H360"/>
@@ -180,7 +195,7 @@
 
           <!-- 04 · AUDIENCE -->
           <article class="stp" data-label="Audience">
-            <figure class="stp__media">
+            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <img src="assets/img/journey/s4-audience.webp" alt="People inside a café seen through the window at dusk" width="1200" height="1500" loading="lazy" decoding="async">
               <svg class="mg mg--audience" viewBox="0 0 400 500" aria-hidden="true">
                 <circle class="mg__l" cx="200" cy="390" r="74"/>
@@ -204,7 +219,7 @@
 
           <!-- 05 · PLAN -->
           <article class="stp" data-label="Plan">
-            <figure class="stp__media">
+            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <img src="assets/img/journey/s5-plan.webp" alt="A long-term marketing plan pinned on a dark wall" width="1200" height="1500" loading="lazy" decoding="async">
               <svg class="mg mg--plan" viewBox="0 0 400 500" aria-hidden="true">
                 <text class="mg__tx" x="40" y="322">12 MONTHS</text>
@@ -230,7 +245,7 @@
 
           <!-- 06 · FIX -->
           <article class="stp" data-label="Fix">
-            <figure class="stp__media">
+            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <img src="assets/img/journey/s6-fix.webp" alt="A phone with a social profile grid next to red-pen corrections" width="1200" height="1500" loading="lazy" decoding="async">
               <svg class="mg mg--fix" viewBox="0 0 400 500" aria-hidden="true">
                 <circle class="mg__l" cx="58" cy="334" r="16"/>
@@ -257,7 +272,7 @@
 
           <!-- 07 · CREATE -->
           <article class="stp" data-label="Create">
-            <figure class="stp__media">
+            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
               <img src="assets/img/journey/s7-create.webp" alt="A phone on a small tripod filming a vertical video" width="1200" height="1500" loading="lazy" decoding="async">
               <svg class="mg mg--create" viewBox="0 0 400 500" aria-hidden="true">
                 <text class="mg__tx" x="40" y="322">REELS · SHORTS</text>
@@ -290,7 +305,7 @@
   <!-- ============ CONTENT (الشغل: تصاميم Gemini — استوديو العشرين) ============ -->
   <section class="content" id="content" aria-labelledby="content-title">
     <div class="wrap content__head">
-      <span class="sec-anchor" aria-hidden="true"></span>
+      <div class="shead"><span class="sec-anchor" aria-hidden="true"></span><p class="slabel" data-slabel><span>(03)</span><span>Content we make</span></p></div>
       <div class="journey__headrow">
         <h2 class="h2" id="content-title" data-chars>Content we make.</h2>
         <p class="ar" lang="ar" dir="rtl" data-fade>كل براند… وله أسلوبه.</p>
@@ -334,10 +349,7 @@
   <!-- ============ SYSTEMS (بارتيشن صغير) ============ -->
   <section class="systems" id="systems" aria-labelledby="systems-title">
     <div class="wrap">
-      <div class="systems__bar" data-fade>
-        <span class="systems__rule" aria-hidden="true"></span>
-        <p class="eyebrow">Also · When you need it</p>
-      </div>
+      <div class="systems__bar"><span class="systems__rule" aria-hidden="true"></span><p class="slabel" data-slabel><span>(04)</span><span>Also, when you need it</span></p></div>
       <div class="systems__head">
         <h2 class="h3" id="systems-title" data-chars>Systems that support the marketing.</h2>
         <p class="ar" lang="ar" dir="rtl" data-fade>مواقع، ومنيوهات، وأنظمة طلبات.</p>
@@ -368,14 +380,20 @@
     </div>
   </section>
 
+  <div class="marq" data-marq data-dir="-1" aria-hidden="true">
+    <div class="marq__track"><p class="marq__row"><span>Strategy</span><i class="dm"></i><span class="m">Content</span><i class="dm"></i><span>Reels</span><i class="dm"></i><span class="m">Shorts</span><i class="dm"></i><span>Growth</span><i class="dm"></i><span class="m">Recognition</span><i class="dm"></i></p><p class="marq__row"><span>Strategy</span><i class="dm"></i><span class="m">Content</span><i class="dm"></i><span>Reels</span><i class="dm"></i><span class="m">Shorts</span><i class="dm"></i><span>Growth</span><i class="dm"></i><span class="m">Recognition</span><i class="dm"></i></p></div>
+  </div>
+
   <!-- ============ CTA ============ -->
   <section class="cta" id="contact" aria-labelledby="cta-title">
+    <span class="cta__beam" aria-hidden="true"></span>
+    <canvas class="dust" aria-hidden="true"></canvas>
     <div class="cta__anchor" aria-hidden="true">
       <span class="anchor-line"></span>
       <span class="anchor-dms"><i class="dm"></i><i class="dm"></i><i class="dm"></i></span>
     </div>
     <div class="wrap cta__body">
-      <p class="eyebrow" data-fade>Step 01</p>
+      <p class="slabel" data-slabel><span>(05)</span><span>Step 01 — always</span></p>
       <h2 class="cta__title" id="cta-title">
         <span class="mask"><span class="ln">Start with</span></span>
         <span class="mask"><span class="ln">a <em class="hero-word">call.</em></span></span>
@@ -393,10 +411,31 @@
 </main>
 
 <footer class="foot">
+  <div class="wrap foot__cols">
+    <div class="foot__col foot__col--lead">
+      <a class="logo" href="#top" aria-label=".ATHR — back to top"><span class="logo__dot">.</span>ATHR</a>
+      <p>Digital marketing,<br>as a full journey.</p>
+    </div>
+    <div class="foot__col">
+      <p class="foot__h">Journey</p>
+      <ul class="foot__steps"><li>01 Call</li><li>02 Audit</li><li>03 Market</li><li>04 Audience</li><li>05 Plan</li><li>06 Fix</li><li>07 Create</li></ul>
+    </div>
+    <div class="foot__col">
+      <p class="foot__h">Contact</p>
+      <p><a class="tlink" href="https://wa.me/201016739509?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AD%D8%A7%D8%A8%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D9%85%D9%83%D8%A7%D9%84%D9%85%D8%A9%20%D9%85%D8%B9%20%D8%A3%D8%AB%D8%B1." target="_blank" rel="noopener">WhatsApp</a></p>
+      <p><a class="tlink" href="mailto:ahmedshiref08@gmail.com">ahmedshiref08@gmail.com</a></p>
+    </div>
+    <div class="foot__col foot__col--end">
+      <p class="foot__h">Local time</p>
+      <p class="foot__time">Cairo <b data-clock>--:--</b></p>
+      <a class="foot__top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
   <p class="foot__giant" aria-hidden="true"><span class="fg"><span class="fg__dot">.</span></span><span class="fg">A</span><span class="fg">T</span><span class="fg">H</span><span class="fg">R</span></p>
   <div class="wrap foot__in">
-    <p>© 2026 · Digital marketing studio</p>
-    <p><a class="tlink" href="mailto:ahmedshiref08@gmail.com">ahmedshiref08@gmail.com</a></p>
+    <p>© 2026 · .ATHR</p>
+    <p class="foot__dms" aria-hidden="true"><i class="dm"></i><i class="dm"></i><i class="dm"></i></p>
+    <p>Digital marketing studio</p>
   </div>
 </footer>
 
@@ -406,6 +445,6 @@
 <script src="assets/vendor/DrawSVGPlugin.min.js"></script>
 <script src="assets/vendor/CustomEase.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="assets/js/site.js?v=4.3"></script>
+<script src="assets/js/site.js?v=4.4"></script>
 </body>
 </html>

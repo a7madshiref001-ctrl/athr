@@ -17,6 +17,8 @@
 
   buildEq();
   buildRail();
+  clock();
+  galleryNames();
 
   if (!ok || reduce) {
     clearTimeout(failsafe);
@@ -71,6 +73,7 @@
     magnet();
     tweak();
     heroScroll();
+    richness();
     const go = () => { heroIntro(); requestAnimationFrame(() => ScrollTrigger.refresh()); };
     if (intro) loader(go); else go();
   });
@@ -180,6 +183,7 @@
     const steps = $$('.stp', sec);
     const N = steps.length;
     const roll = $$('.jr__roll span', sec);
+    const ghostRoll = $$('.jr__groll span', sec);
     const lis = $$('.jr__marks li', sec);
     const fill = $('.jr__fill', sec);
     const parts = steps.map((s) => ({
@@ -224,6 +228,7 @@
     const setActive = (cur) => {
       steps.forEach((s, i) => s.classList.toggle('is-active', i === cur));
       roll.forEach((r) => r.style.setProperty('--i', cur));
+      ghostRoll.forEach((r) => r.style.setProperty('--i', cur));
       lis.forEach((li, i) => { li.classList.toggle('is-on', i === cur); li.classList.toggle('is-done', i < cur); });
     };
 
@@ -521,6 +526,126 @@
       const pre = $('pre', box); pre.textContent = css; pre.style.display = 'block';
       if (navigator.clipboard) navigator.clipboard.writeText(css).catch(() => {});
     });
+  }
+
+  /* ==========================================================================
+     v4.3 — تفاصيل وحركة: شريط تقدّم · جو بيتحرك · شرايط كلام · لابلات · ماسات · ميل · غبار
+     ========================================================================== */
+  function richness() {
+    // شريط التقدّم + التيكستر بيتحرك أبطأ من الصفحة
+    const bar = $('.progress'), tex = $('.atmo__tex');
+    ScrollTrigger.create({
+      start: 0, end: 'max',
+      onUpdate: (self) => {
+        if (bar) bar.style.setProperty('--p', self.progress.toFixed(4));
+        if (tex) tex.style.setProperty('--ty', (-self.progress * 6).toFixed(2) + 'vh');
+      },
+    });
+
+    // شرايط الكلام: ماشية لوحدها، وبتسرع مع السكرول وبتعكس لما تطلع لفوق
+    const ms = $$('[data-marq]');
+    if (ms.length) {
+      let boost = 0, dir = 1;
+      if (lenis) lenis.on('scroll', (e) => { const v = e.velocity || 0; boost = Math.min(18, Math.abs(v) * 0.7); if (Math.abs(v) > 0.4) dir = v > 0 ? 1 : -1; });
+      ms.forEach((m) => {
+        const track = $('.marq__track', m), row = $('.marq__row', m), side = Number(m.dataset.dir || 1);
+        let x = 0, w = row.offsetWidth, on = false;
+        window.addEventListener('resize', () => { w = row.offsetWidth; });
+        ScrollTrigger.create({ trigger: m, start: 'top bottom', end: 'bottom top', onToggle: (st) => { on = st.isActive; } });
+        gsap.ticker.add((t, dt) => {
+          if (!on || !w) return;
+          x -= (0.55 + boost) * (dt / 16.7) * side * dir;
+          if (x <= -w) x += w; else if (x > 0) x -= w;
+          track.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0) skewX(' + (-boost * 0.35 * dir * side).toFixed(2) + 'deg)';
+        });
+      });
+      gsap.ticker.add(() => { boost *= 0.93; });
+    }
+
+    // لابلات الأقسام: الحروف بتتلم (tracking) والرقم الأحمر يظهر الأول
+    $$('[data-slabel]').forEach((el) => {
+      const num = el.children[0], txt = el.children[1];
+      gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 90%', once: true } })
+        .fromTo(num, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7 }, 0)
+        .fromTo(txt, { opacity: 0, letterSpacing: '.6em' }, { opacity: 1, letterSpacing: '.18em', duration: 1.4 }, 0.1);
+    });
+
+    // الخط اللي بينزل من الجملة للرحلة
+    const con = $('.connector i');
+    if (con) gsap.fromTo(con, { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '.connector', start: 'top 85%', end: 'bottom 45%', scrub: true } });
+
+    // الأرقام الضخمة بتتحرك بعكس السكرول
+    $$('[data-ghost]').forEach((g) => gsap.fromTo(g, { yPercent: 18 }, { yPercent: -18, ease: 'none', scrollTrigger: { trigger: g.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+
+    // ماسات طايرة حوالين صورة الهيرو
+    $$('.floaters i').forEach((d, i) => gsap.to(d, { y: i % 2 ? 12 : -14, x: i === 2 ? 8 : 0, duration: 3.2 + i * 0.9, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: i * 0.4 }));
+
+    // صورة الهيرو بتميل مع الماوس (عمق خفيف)
+    const side = $('[data-tilt]'), media = $('[data-hero-media]');
+    if (side && media && fine) {
+      const img = $('img', media);
+      const rx = gsap.quickTo(media, 'rotationX', { duration: 0.9, ease: 'athr' });
+      const ry = gsap.quickTo(media, 'rotationY', { duration: 0.9, ease: 'athr' });
+      const ix = gsap.quickTo(img, 'xPercent', { duration: 1.1, ease: 'athr' });
+      const flo = $$('.floaters i', side).map((d) => gsap.quickTo(d, 'xPercent', { duration: 1.2, ease: 'athr' }));
+      const hero = $('.hero');
+      hero.addEventListener('pointermove', (e) => {
+        const r = side.getBoundingClientRect();
+        const px = (e.clientX - (r.left + r.width / 2)) / window.innerWidth, py = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
+        ry(px * 9); rx(-py * 7); ix(-px * 4); flo.forEach((f, i) => f(px * (i + 1) * 60));
+      });
+      hero.addEventListener('pointerleave', () => { rx(0); ry(0); ix(0); flo.forEach((f) => f(0)); });
+    }
+
+    dust();
+  }
+
+  // غبار في شعاع النور (النهاية) — بيشتغل بس وهو باين
+  function dust() {
+    const c = $('.dust');
+    if (!c) return;
+    const ctx = c.getContext('2d');
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let W = 0, H = 0, on = false, parts = [];
+    const size = () => {
+      W = c.clientWidth; H = c.clientHeight; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const n = W < 700 ? 34 : 70;
+      parts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.4 + 0.3, vx: (Math.random() - 0.5) * 0.12, vy: -Math.random() * 0.18 - 0.03, a: Math.random() * 0.5 + 0.15, p: Math.random() * Math.PI * 2 }));
+    };
+    size();
+    window.addEventListener('resize', size);
+    ScrollTrigger.create({ trigger: '.cta', start: 'top bottom', end: 'bottom top', onToggle: (st) => { on = st.isActive; } });
+    gsap.ticker.add(() => {
+      if (!on) return;
+      ctx.clearRect(0, 0, W, H);
+      for (const d of parts) {
+        d.x += d.vx; d.y += d.vy; d.p += 0.02;
+        if (d.y < -4) { d.y = H + 4; d.x = Math.random() * W; }
+        if (d.x < -4) d.x = W + 4; else if (d.x > W + 4) d.x = -4;
+        // أنور جوه الشعاع (ناحية اليمين)
+        const inBeam = Math.max(0, 1 - Math.abs(d.x - W * 0.72) / (W * 0.32));
+        ctx.globalAlpha = d.a * (0.35 + inBeam * 0.9) * (0.75 + Math.sin(d.p) * 0.25);
+        ctx.fillStyle = '#F7F5F2';
+        ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    });
+  }
+
+  // ساعة القاهرة (تفصيلة صغيرة: الاستوديو صاحي)
+  function clock() {
+    const els = $$('[data-clock]');
+    if (!els.length) return;
+    let fmt;
+    try { fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit' }); } catch (e) { return; }
+    const tick = () => { const v = fmt.format(new Date()); els.forEach((e) => { e.textContent = v; }); };
+    tick();
+    setInterval(tick, 20000);
+  }
+
+  // اسم كل تصميم يظهر في الهوفر (من الـalt)
+  function galleryNames() {
+    $$('.g img').forEach((img) => { const n = (img.alt || '').split(' — ')[0]; if (n) img.parentElement.dataset.name = n; });
   }
 
   /* ---------- مكوّنات بتتبني بالكود (شغالة حتى من غير GSAP) ---------- */
