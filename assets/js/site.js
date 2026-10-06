@@ -63,7 +63,7 @@
     fades();
     statement();
     journey();
-    reel();
+    gallery();
     systems();
     reveals();
     finale();
@@ -334,27 +334,53 @@
     });
   }
 
-  /* ---------- المحتوى: صفين عكس بعض + ميل مع سرعة السكرول ---------- */
-  function reel() {
-    const wrap = $('[data-reel]');
-    if (!wrap) return;
-    const rows = $$('.reel__row', wrap);
-    rows.forEach((row) => {
-      const dir = Number(row.dataset.dir || 1);
-      const travel = () => Math.min(row.scrollWidth * 0.35, window.innerWidth * 0.65);
-      gsap.fromTo(row, { x: () => (dir > 0 ? 0 : -travel()) }, {
-        x: () => (dir > 0 ? -travel() : 0), ease: 'none',
-        scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'bottom top', scrub: 0.6, invalidateOnRefresh: true },
+  /* ---------- المحتوى: ٣ صفوف (كاروسيلات · صور Gemini · كاروسيلات) عكس بعض + ميل مع السرعة ----------
+     كمبيوتر: المعرض بيتثبّت وكل صف بيمشي لحد آخره (كل الصور بتتشاف). موبايل: بيمشي مع السكرول من غير تثبيت. */
+  function gallery() {
+    const sec = $('.content'), wrap = $('[data-gal]');
+    if (!sec || !wrap) return;
+    const stage = $('.gal__stage', wrap);
+    const rows = $$('.gal__row', wrap);
+    const gut = () => parseFloat(getComputedStyle($('.wrap')).paddingLeft) || 24;
+    const over = (row) => Math.max(0, row.scrollWidth + (parseFloat(getComputedStyle(row).marginLeft) || 0) - window.innerWidth);
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 900px) and (min-height: 640px)', () => {
+      sec.classList.add('is-pinned');
+      const tl = gsap.timeline();
+      rows.forEach((row) => {
+        const d = Number(row.dataset.dir || 1);
+        tl.fromTo(row, { x: () => (d > 0 ? gut() : -over(row) - gut()) }, { x: () => (d > 0 ? -over(row) - gut() : gut()), ease: 'none' }, 0);
       });
+      const st = ScrollTrigger.create({
+        trigger: stage, pin: true, start: 'top top', end: () => '+=' + Math.round(Math.max(...rows.map(over)) * 0.85 + window.innerHeight * 0.2),
+        scrub: 0.8, animation: tl, invalidateOnRefresh: true, anticipatePin: 1,
+      });
+      return () => { sec.classList.remove('is-pinned'); st.kill(); tl.kill(); gsap.set(rows, { clearProps: 'x' }); };
     });
+
+    mm.add('(max-width: 899px), (max-height: 639px)', () => {
+      const tws = rows.map((row) => {
+        const d = Number(row.dataset.dir || 1);
+        const travel = () => Math.min(over(row), window.innerWidth * 1.4);
+        return gsap.fromTo(row, { x: () => (d > 0 ? 0 : -travel()) }, {
+          x: () => (d > 0 ? -travel() : 0), ease: 'none',
+          scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'bottom top', scrub: 0.6, invalidateOnRefresh: true },
+        });
+      });
+      return () => tws.forEach((t) => { if (t.scrollTrigger) t.scrollTrigger.kill(); t.kill(); });
+    });
+
+    // ميل خفيف مع سرعة السكرول
     const skewTo = gsap.quickTo(rows, 'skewX', { duration: 0.6, ease: 'athr' });
     ScrollTrigger.create({
       trigger: wrap, start: 'top bottom', end: 'bottom top',
-      onUpdate: (self) => skewTo(gsap.utils.clamp(-6, 6, self.getVelocity() / -340)),
+      onUpdate: (self) => skewTo(gsap.utils.clamp(-5, 5, self.getVelocity() / -380)),
       onLeave: () => skewTo(0), onLeaveBack: () => skewTo(0),
     });
-    gsap.fromTo($$('.slide', wrap), { opacity: 0, y: 50 }, {
-      opacity: 1, y: 0, duration: 1.2, stagger: { each: 0.035, from: 'center' },
+    // دخول: الصور بتطلع من النص للأطراف
+    gsap.fromTo($$('.g', wrap), { opacity: 0, y: 46 }, {
+      opacity: 1, y: 0, duration: 1.2, stagger: { each: 0.025, from: 'center' },
       scrollTrigger: { trigger: wrap, start: 'top 85%', once: true },
     });
   }

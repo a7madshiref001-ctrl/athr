@@ -212,14 +212,23 @@ a{color:inherit}
 
 @media (min-width:900px) and (max-height:700px){.journey.is-pinned .stp__t{font-size:clamp(36px,3.6vw,56px)}.journey.is-pinned .stp__outs{margin-top:20px}}
 
-/* ---------- Content reel ---------- */
-.content{overflow:hidden}
-.reel{margin-top:clamp(72px,11vh,130px);display:grid;gap:18px}
-.reel__row{display:flex;gap:18px;width:max-content;will-change:transform}
-.reel__row[data-dir="-1"]{margin-left:-30vw}
-.slide{width:clamp(180px,15vw,250px);aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--surface);flex:none}
-.slide img{width:100%;height:100%;object-fit:cover}
-.reel__legend{margin-top:36px;display:flex;gap:8px}
+/* ---------- Content gallery: صفين تصاميم (Gemini — استوديو العشرين) عكس بعض ---------- */
+.content{overflow:hidden;padding-top:var(--sec-pad)}
+.content__head{padding-bottom:clamp(64px,10vh,110px)}
+.gal{position:relative}
+.gal__stage{display:grid;align-content:center;gap:clamp(14px,2vh,22px);padding-block:8px}
+.gal__row{display:flex;gap:clamp(14px,1.4vw,22px);width:max-content;will-change:transform}
+.gal__row[data-dir="-1"]{margin-left:-14vw}
+.g{position:relative;height:clamp(230px,34svh,360px);aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:var(--surface);flex:none}
+.g--wide{aspect-ratio:1433/800}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.g:hover img{transform:scale(1.04)}
+.gal__legend{margin-top:clamp(40px,6vh,64px);padding-bottom:var(--sec-pad);display:flex;flex-wrap:wrap;gap:8px}
+/* كمبيوتر: المعرض بيتثبّت والصفوف بتمشي عكس بعض لحد آخرها */
+.content.is-pinned .gal__stage{height:100svh;align-content:center}
+@media (max-width:899px){.g{height:clamp(200px,30svh,280px)}}
+/* من غير حركة: كل التصاميم ظاهرة */
+html.motion-off .gal__row{flex-wrap:wrap;width:auto;margin:0;padding-inline:var(--gut)}
 
 /* ---------- Systems (بارتيشن صغير) ---------- */
 .systems{padding-block:clamp(80px,12vh,140px) var(--sec-pad);border-top:1px solid var(--line)}
@@ -332,6 +341,6 @@ html.motion-off .loader{display:none!important}
   .js .anchor-dms .dm,.js [data-hero-fade],.js .nav{opacity:1}
   .js .hero__media{clip-path:none}
   .intro .loader{display:none}
-  .reel__row{transform:none!important}
+  .gal__row{transform:none!important;flex-wrap:wrap;width:auto;margin:0;padding-inline:var(--gut)}
   ::view-transition-old(root),::view-transition-new(root){animation:none}
 }
