@@ -484,7 +484,13 @@
       const W = pin.clientWidth, H = pin.clientHeight;
       Lay.W = W; Lay.H = H;
       if (W >= 900) { Lay.k = gsap.utils.clamp(0.5, 1.25, Math.min((W * 0.5) / 640, (H * 0.56) / 520)); Lay.fx = 0.67; Lay.fy = 0.82; }
-      else { Lay.k = Math.min((W * 0.92) / 620, (H * 0.42) / 520); Lay.fx = 0.5; Lay.fy = 0.84; }
+      else {
+        // (موبايل: الرسمة بتاخد المساحة اللي فاضلة تحت الكلام بالظبط، والخريطة تحت)
+        const list = $('.jw__stations', pin);
+        const textBottom = (list ? list.offsetTop : H * 0.14) + Math.max(0, ...sts.map((x) => x.offsetHeight)) + 26;
+        Lay.fy = 0.76; Lay.fx = 0.5;
+        Lay.k = Math.min((W * 0.88) / 620, Math.max(H * Lay.fy - textBottom, 110) / 500);
+      }
       Lay.kz = (W * (W >= 900 ? 0.82 : 0.9)) / (SP * (N - 1) + 760);
       Lay.fyz = W >= 900 ? 0.64 : 0.62;
       Lay.cover = (Math.SQRT2 * (W + H)) / 20 + 2;
@@ -578,6 +584,21 @@
       .to({}, { duration: 0.6 }, iAt + 2.4);
     const lightAt = iAt + 1.3;
 
+    // ---- خريطة المحطات تحت (موبايل): ٧ ماسات على خط — الحالية حمرا، اللي خلصت بيضا ----
+    const stepper = document.createElement('div');
+    stepper.className = 'jw__stepper';
+    stepper.setAttribute('aria-hidden', 'true');
+    stepper.innerHTML = '<div class="jw__srow"><span class="jw__sline"><i></i></span>' + NAMES.map(() => '<i class="jw__sd"></i>').join('') + '</div><p class="jw__sname"></p>';
+    pin.appendChild(stepper);
+    const sds = $$('.jw__sd', stepper), sline = $('.jw__sline i', stepper), sname = $('.jw__sname', stepper);
+    const stepUI = (i) => {
+      const on = i >= 0 && i < N;
+      sds.forEach((d, j) => { d.classList.toggle('is-done', on ? j < i : i >= N); d.classList.toggle('is-on', j === i); });
+      sline.style.transform = `scaleX(${on ? i / (N - 1) : i >= N ? 1 : 0})`;
+      sname.innerHTML = on ? `<b>${String(i + 1).padStart(2, '0')}</b> / 07 — ${NAMES[i]}` : i < 0 ? '<span class="jw__swipe">Swipe up</span> · 7 stations' : '';
+      stepper.classList.toggle('is-off', i >= N);
+    };
+
     // ---- الكلام على الشمال: بيتبدّل لما المحطة تتغيّر ----
     const splits = sts.map((s) => SplitText.create($('.st__t', s), { type: 'words,chars', mask: 'words' }).chars);
     const rests = sts.map((s) => [$('.ar', s), ...$$('.st__outs li', s)]);
@@ -605,6 +626,7 @@
       }
       nodes.forEach((n, j) => { const done = on ? j <= i : i >= N; [n.d, n.t, n.nm].forEach((e) => e.classList.toggle('is-done', done)); });
       build.forEach((b, j) => { stG[j].classList.toggle('is-live', j === i); if (b.live) b.live(j === i); });
+      stepUI(i);
     };
     const indexAt = (time) => {
       if (time < arrive[0] - 0.2) return -1;
@@ -614,22 +636,42 @@
     };
     function tick() {
       show(indexAt(tl.time()));
+      svg.classList.toggle('is-zoom', tl.time() >= zAt + 0.3);
       const light = tl.time() >= lightAt;
       if (light !== tick.light && stJ && stJ.isActive) { tick.light = light; setTheme(light ? 'light' : 'dark'); }
       if (sunVid) sunPlay(sunVid, light && stJ && stJ.isActive);
     }
 
     // سناب على المحطات (في اتجاه السكرول)
-    const marks = [0, ...holds, zHold, tl.duration()].map((m) => m / tl.duration());
+    const stops = [0, ...holds, zHold, tl.duration()];
+    const marks = stops.map((m) => m / tl.duration());
+    // موبايل: كل سحبة = محطة كاملة. السكرول بيختار المحطة، والرسمة بتتلعب لوحدها من أولها لآخرها
+    // (مفيش رسمة بتقف في النص، ومفيش سناب بيتخانق مع الصباع)
+    const stepped = window.innerWidth < 900;
+    let stepIdx = -1, stepTw = null;
+    const goStep = (k) => {
+      if (k === stepIdx) return;
+      stepIdx = k;
+      const to = stops[k], d = Math.abs(to - tl.time());
+      if (stepTw) stepTw.kill();
+      stepTw = tl.tweenTo(to, { duration: gsap.utils.clamp(0.45, 2.6, d * 0.42), ease: 'power1.inOut' });
+    };
     stJ = ScrollTrigger.create({
       trigger: pin, pin: true, start: 'top top',
-      end: () => '+=' + Math.round(tl.duration() * Lay.H * (Lay.W >= 900 ? 0.2 : 0.18)),
-      scrub: 0.8, animation: tl, anticipatePin: 1, invalidateOnRefresh: true,
+      end: () => '+=' + Math.round(stepped ? Lay.H * 0.72 * (stops.length - 1) : tl.duration() * Lay.H * 0.2),
+      ...(stepped
+        ? { onUpdate: (self) => goStep(Math.round(self.progress * (stops.length - 1))) }
+        : { scrub: 0.8, animation: tl, invalidateOnRefresh: true }),
+      anticipatePin: 1,
       onRefreshInit: () => { layout(); },
-      onRefresh: () => { lastK = -1; render(); },
+      onRefresh: () => {
+        lastK = -1;
+        if (stepped) { const now = tl.time(); tl.invalidate(); tl.time(0, true); tl.time(now, true); tick(); }
+        render();
+      },
       onToggle: (self) => { if (self.isActive) { tick.light = tl.time() >= lightAt; setTheme(tick.light ? 'light' : 'dark'); } if (sunVid) sunPlay(sunVid, self.isActive && tl.time() >= lightAt); },
     });
-    addSnap(stJ, () => marks);
+    if (!stepped) addSnap(stJ, () => marks);
     show(-1);
     render();
   }

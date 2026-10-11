@@ -374,6 +374,24 @@ html:not(.motion) .nav{position:absolute}
 .wk__kind{margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cap)}
 .motion .wk__legend{position:absolute;right:var(--gut);bottom:clamp(64px,10svh,100px);z-index:3;margin:0;width:auto;padding:0}
 
+.jw__stepper{display:none}
+@media (max-width:899px){
+  .motion .jw__stepper{display:block;position:absolute;left:var(--gut);right:var(--gut);bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:6;transition:opacity .5s}
+  .motion .jw__stepper.is-off{opacity:0}
+  .jw__srow{position:relative;display:flex;justify-content:space-between;align-items:center;height:16px}
+  .jw__sline{position:absolute;left:5px;right:5px;top:50%;height:1px;background:#3a3732}
+  .jw__sline i{position:absolute;inset:0;background:var(--white);transform-origin:0 50%;transform:scaleX(0);transition:transform .9s var(--ease)}
+  .jw__sd{position:relative;width:9px;height:9px;background:var(--black);border:1px solid #5d5850;transform:rotate(45deg);transition:background-color .5s var(--ease),border-color .5s var(--ease),transform .6s var(--ease)}
+  .jw__sd.is-done{background:var(--white);border-color:var(--white)}
+  .jw__sd.is-on{background:var(--red);border-color:var(--red);transform:rotate(45deg) scale(1.5)}
+  .jw__sname{margin-top:12px;text-align:center;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cap);font-variant-numeric:tabular-nums;min-height:1.6em}
+  .jw__sname b{font-weight:500;color:var(--white)}
+  .jw__swipe{color:var(--white);display:inline-block;animation:swipe 1.8s var(--ease) infinite}
+  @keyframes swipe{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  .motion .w-nname{display:none}
+  .motion .jw__world .w-nlab{transition:opacity .5s}
+  .motion .jw__world:not(.is-zoom) .w-nlab{opacity:0}
+}
 @media (max-height:780px){.motion .wk__head .ar{display:none}.wk__index button{min-height:18px}}
 @media (max-width:899px){
   .motion .jw__stations{top:calc(14svh + 30px);width:auto;right:var(--gut)}
