@@ -388,6 +388,8 @@ html:not(.motion) .nav{position:absolute}
   .jw__sname b{font-weight:500;color:var(--white)}
   .jw__swipe{color:var(--white);display:inline-block;animation:swipe 1.8s var(--ease) infinite}
   @keyframes swipe{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+  .motion .s-hero .hero__foot{display:none}
+  .motion .hero__stepper{z-index:6;padding:13px 16px 9px;border-radius:16px;background:rgba(17,17,17,.86);left:calc(var(--gut) - 8px);right:calc(var(--gut) - 8px)}
   .motion .w-nname{display:none}
   .motion .jw__world .w-nlab{transition:opacity .5s}
   .motion .jw__world:not(.is-zoom) .w-nlab{opacity:0}

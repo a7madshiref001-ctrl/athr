@@ -241,9 +241,44 @@
     }
     heroState.actor = actor; heroState.p0 = p0; heroState.tl = () => tl;
 
+    // موبايل: نفس فكرة الرحلة — كل سحبة = جملة كاملة (الحيطة ← اتنسوا ← التصميم آخر خطوة ← الماسة تقع)
+    // والمشهد بيتلعب لوحده لآخره. الكمبيوتر: scrub زي ما هو.
+    const stepped = window.innerWidth < 900;
+    const stops = [0, 3.1, 6.85, 9.3, tl.duration()];
+    const LABELS = ['THE SAME', 'FORGOTTEN', 'THINK FIRST'];
+    let stepIdx = -1, stepTw = null, stepUI = () => {};
+    if (stepped) {
+      tl.pause(0);
+      const box = document.createElement('div');
+      box.className = 'jw__stepper hero__stepper';
+      box.setAttribute('aria-hidden', 'true');
+      box.innerHTML = '<div class="jw__srow"><span class="jw__sline"><i></i></span>' + LABELS.map(() => '<i class="jw__sd"></i>').join('') + '</div><p class="jw__sname"></p>';
+      pin.appendChild(box);
+      const sds = $$('.jw__sd', box), line = $('.jw__sline i', box), name = $('.jw__sname', box);
+      stepUI = (k) => { // k: 0 = العنوان · 1..3 = الجمل · 4 = الماسة بتقع
+        const i = k - 1, on = i >= 0 && i < LABELS.length;
+        sds.forEach((d, j) => { d.classList.toggle('is-done', on ? j < i : k > LABELS.length); d.classList.toggle('is-on', j === i); });
+        line.style.transform = `scaleX(${on ? i / (LABELS.length - 1) : k > LABELS.length ? 1 : 0})`;
+        name.innerHTML = on ? `<b>0${i + 1}</b> / 03 — ${LABELS[i]}` : k === 0 ? '<span class="jw__swipe">Swipe up</span>' : '';
+        box.classList.toggle('is-off', k > LABELS.length);
+      };
+      stepUI(0);
+    }
+    const goStep = (k) => {
+      if (k === stepIdx) return;
+      stepIdx = k; stepUI(k);
+      const to = stops[k], d = Math.abs(to - tl.time());
+      if (stepTw) stepTw.kill();
+      stepTw = tl.tweenTo(to, { duration: gsap.utils.clamp(0.45, 2.4, d * 0.42), ease: 'power1.inOut' });
+    };
     ScrollTrigger.create({
-      trigger: pin, pin: true, start: 'top top', end: () => '+=' + Math.round(H() * (desk() ? 3.1 : 2.8)),
-      scrub: 0.9, animation: tl, invalidateOnRefresh: true, anticipatePin: 1,
+      trigger: pin, pin: true, start: 'top top',
+      end: () => '+=' + Math.round(stepped ? H() * 0.72 * (stops.length - 1) : H() * 3.1),
+      ...(stepped
+        ? { onUpdate: (self) => goStep(Math.round(self.progress * (stops.length - 1))) }
+        : { scrub: 0.9, animation: tl, invalidateOnRefresh: true }),
+      anticipatePin: 1,
+      onRefresh: () => { if (stepped) { const now = tl.time(); tl.invalidate(); tl.time(0, true); tl.time(now, true); render(); swapDot(); } },
     });
     render();
 
