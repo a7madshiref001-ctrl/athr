@@ -13,27 +13,30 @@
 <link rel="preload" href="assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/readex-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/journey/hero.webp" as="image">
-<link rel="stylesheet" href="assets/css/site.css?v=4.7">
+<link rel="stylesheet" href="assets/css/v5.css?v=5.8">
 <script>
   document.documentElement.classList.replace('no-js','js');
-  try{ if(!sessionStorage.getItem('athr-intro')) document.documentElement.classList.add('intro'); }catch(e){}
+  try{ if(!sessionStorage.getItem('athr-intro5')) document.documentElement.classList.add('intro'); }catch(e){}
 </script>
 </head>
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="i-arrow-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-4 4l4-4m-4-4l4 4"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 7L7 17M8 7h9v9"/></symbol><symbol id="i-brand-whatsapp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0za5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></g></symbol></svg>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-4 4l4-4m-4-4l4 4"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 7L7 17M8 7h9v9"/></symbol>
+  <symbol id="i-brand-whatsapp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0za5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></g></symbol>
+</svg>
 
-<!-- Intro (مرة واحدة في الجلسة) -->
+<!-- المقدمة (مرة واحدة في الجلسة) -->
 <div class="loader" aria-hidden="true">
-  <p class="loader__mark"><span class="loader__dot">.</span><span class="loader__word">ATHR</span></p>
-  <p class="loader__steps"><span>Call</span><span>Audit</span><span>Market</span><span>Audience</span><span>Plan</span><span>Fix</span><span>Create</span></p>
+  <p class="loader__mark"><span class="loader__slot"></span><span class="loader__word">ATHR</span></p>
   <span class="loader__line"></span>
+  <p class="loader__tag">Digital marketing studio</p>
 </div>
+<span class="loader__dm" aria-hidden="true"></span>
 
-<div class="atmo" aria-hidden="true"><span class="atmo__tex"></span><span class="atmo__glow"></span><span class="atmo__grid"><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
 <div class="grain" aria-hidden="true"></div>
-<div class="progress" aria-hidden="true"><i></i></div>
 <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+<p class="chap" aria-hidden="true"><i class="chap__dm"></i><span class="chap__roll"><span>01 — The noise</span><span>02 — The journey</span><span>03 — The work</span><span>04 — Systems</span><span>05 — The call</span></span></p>
 
 <a class="skip" href="#main">Skip to content</a>
 
@@ -42,7 +45,7 @@
     <a class="logo" href="#top" aria-label=".ATHR — home"><span class="logo__dot">.</span>ATHR</a>
     <nav class="nav__links" aria-label="Sections">
       <a href="#journey">Journey</a>
-      <a href="#content">Content</a>
+      <a href="#work">Work</a>
       <a href="#systems">Systems</a>
     </nav>
     <a class="btn btn--sm" href="https://wa.me/201016739509?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AD%D8%A7%D8%A8%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D9%85%D9%83%D8%A7%D9%84%D9%85%D8%A9%20%D9%85%D8%B9%20%D8%A3%D8%AB%D8%B1." target="_blank" rel="noopener">Book a call</a>
@@ -51,19 +54,17 @@
 
 <main id="main">
 
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="top" aria-labelledby="hero-title">
-    <div class="hero__anchor" aria-hidden="true">
-      <span class="anchor-line"></span>
-      <span class="anchor-dms"><i class="dm"></i><i class="dm"></i><i class="dm"></i></span>
-    </div>
+  <!-- ================= 01 · THE NOISE — هيرو + حيطة التشابه ================= -->
+  <section class="s-hero" id="top" data-theme="dark" data-chap="0" aria-labelledby="hero-title">
+    <div class="pin hero">
+      <div class="wall" aria-hidden="true"><div class="wall__grid"></div></div>
+      <div class="hero__anchor" aria-hidden="true"><span class="anchor-line"></span></div>
 
-    <div class="wrap hero__grid">
-      <div class="hero__copy" data-hero-body>
+      <div class="wrap hero__copy">
         <p class="eyebrow" data-hero-fade>Digital marketing studio</p>
         <h1 class="hero__title" id="hero-title">
           <span class="mask"><span class="ln">Not just design.</span></span>
-          <span class="mask"><span class="ln">A full <em class="hero-word">journey.</em></span></span>
+          <span class="mask"><span class="ln">A full <em class="hero-word">journey</em><span class="pdot" data-pdot="hero" aria-hidden="true"></span><span class="sr">.</span></span></span>
         </h1>
         <p class="ar hero__ar" lang="ar" dir="rtl" data-hero-fade>من أول مكالمة… لحد أول ريل.</p>
         <div class="hero__row" data-hero-fade>
@@ -75,286 +76,178 @@
         </div>
       </div>
 
-      <div class="hero__side" data-tilt>
-        <figure class="hero__media" data-hero-media>
-          <img src="assets/img/journey/hero.webp" alt="A notebook on a dark desk with a red line connecting seven points" width="1200" height="1500" fetchpriority="high">
-          <span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </figure>
-        <span class="floaters" aria-hidden="true"><i class="dm"></i><i class="dm"></i><i class="dm"></i></span>
-        <p class="fig" data-hero-fade><span>Fig. 01</span><span>The plan comes before the post.</span></p>
+      <div class="caps">
+        <div class="cap" data-cap>
+          <p class="cap__en">Most brands look <em>the same.</em></p>
+          <p class="ar" lang="ar" dir="rtl">أغلب البراندات… شبه بعض.</p>
+        </div>
+        <div class="cap" data-cap>
+          <p class="cap__en">And the same gets <em>forgotten.</em></p>
+          <p class="ar" lang="ar" dir="rtl">لو شبه غيرك… هتتنسى.</p>
+        </div>
+        <div class="cap" data-cap data-words>
+          <p class="cap__en">Design is the last step. Not the first.</p>
+          <p class="ar" lang="ar" dir="rtl">قبل أي تصميم… لازم نفهم.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="wrap hero__foot" data-hero-fade>
-      <span>01 → 07 · Scroll</span>
-      <span class="hero__cue" aria-hidden="true"><i></i></span>
-      <span>Cairo <b data-clock>--:--</b></span>
+      <span class="actor" data-actor="hero" aria-hidden="true"></span>
+      <span class="trail" data-trail="hero" aria-hidden="true"></span>
+
+      <div class="wrap hero__foot" data-hero-fade>
+        <span class="hero__spacer" aria-hidden="true"></span>
+        <span class="hero__cue" aria-hidden="true"><i></i></span>
+        <span>Cairo <b data-clock>--:--</b></span>
+      </div>
     </div>
   </section>
 
-  <div class="marq" data-marq data-dir="1" aria-hidden="true">
-    <div class="marq__track"><p class="marq__row"><span>Call</span><i class="dm"></i><span class="m">Brand audit</span><i class="dm"></i><span>Market</span><i class="dm"></i><span class="m">Audience</span><i class="dm"></i><span>Plan</span><i class="dm"></i><span class="m">Fix</span><i class="dm"></i><span>Create</span><i class="dm"></i></p><p class="marq__row"><span>Call</span><i class="dm"></i><span class="m">Brand audit</span><i class="dm"></i><span>Market</span><i class="dm"></i><span class="m">Audience</span><i class="dm"></i><span>Plan</span><i class="dm"></i><span class="m">Fix</span><i class="dm"></i><span>Create</span><i class="dm"></i></p></div>
-  </div>
+  <!-- ================= 02 · THE JOURNEY — خط واحد، ٧ محطات ================= -->
+  <section class="s-journey" id="journey" data-theme="dark" data-chap="1" aria-labelledby="journey-title">
+    <div class="pin jw">
+      <svg class="jw__world" aria-hidden="true"></svg>
 
-  <!-- ============ STATEMENT ============ -->
-  <section class="sec statement" aria-label="The idea">
-    <div class="wrap statement__in">
-      <p class="slabel slabel--c" data-slabel><span>(01)</span><span>The idea</span></p>
-      <p class="statement__text" data-words>Design is the last step. Not the first.</p>
-      <p class="ar statement__ar" lang="ar" dir="rtl" data-fade>قبل أي تصميم… لازم نفهم.</p>
-      <span class="connector" aria-hidden="true"><i></i></span>
+      <div class="jw__intro">
+        <p class="slabel"><span>(02)</span><span>Seven stations</span></p>
+        <h2 class="h2" id="journey-title">The journey.</h2>
+        <p class="ar" lang="ar" dir="rtl">سبع محطات، بالترتيب.</p>
+      </div>
+
+      <div class="wrap jw__panel">
+        <p class="jw__count" aria-hidden="true"><span class="jw__roll"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span></span><span class="jw__of">/ 07</span></p>
+        <ol class="jw__stations">
+          <li class="st">
+            <p class="st__n">01</p>
+            <h3 class="st__t">The call.</h3>
+            <p class="ar" lang="ar" dir="rtl">بنبدأ بمكالمة… بنفهم منك كل تفصيلة عن البيزنس بتاعك.</p>
+            <ul class="st__outs"><li>Goals</li><li>Budget</li><li>Pain points</li></ul>
+          </li>
+          <li class="st">
+            <p class="st__n">02</p>
+            <h3 class="st__t">Brand audit.</h3>
+            <p class="ar" lang="ar" dir="rtl">ندرس براندك: نقاط القوة، ونقاط الضعف.</p>
+            <ul class="st__outs"><li>Strengths</li><li>Weaknesses</li><li>Voice</li></ul>
+          </li>
+          <li class="st">
+            <p class="st__n">03</p>
+            <h3 class="st__t">Market &amp; rivals.</h3>
+            <p class="ar" lang="ar" dir="rtl">ندرس السوق والمنافسين… ونلاقي الفجوة.</p>
+            <ul class="st__outs"><li>Competitors</li><li>Gaps</li><li>Opportunities</li></ul>
+          </li>
+          <li class="st">
+            <p class="st__n">04</p>
+            <h3 class="st__t">Your audience.</h3>
+            <p class="ar" lang="ar" dir="rtl">نعرف عميلك المستهدف… وإيه اللي يهمه فعلًا.</p>
+            <ul class="st__outs"><li>Personas</li><li>Interests</li><li>Platforms</li></ul>
+          </li>
+          <li class="st">
+            <p class="st__n">05</p>
+            <h3 class="st__t">The plan.</h3>
+            <p class="ar" lang="ar" dir="rtl">خطة تسويق كاملة… على المدى الطويل.</p>
+            <ul class="st__outs"><li>Positioning</li><li>Content pillars</li><li>Calendar</li></ul>
+          </li>
+          <li class="st">
+            <p class="st__n">06</p>
+            <h3 class="st__t">Fix the pages.</h3>
+            <p class="ar" lang="ar" dir="rtl">نصحّح كل عيب تسويقي في صفحاتك.</p>
+            <ul class="st__outs"><li>Bio</li><li>Highlights</li><li>Grid</li></ul>
+          </li>
+          <li class="st">
+            <p class="st__n">07</p>
+            <h3 class="st__t">Create.</h3>
+            <p class="ar" lang="ar" dir="rtl">تصاميم، وريلز، وشورتس… بنظام واحد.</p>
+            <ul class="st__outs"><li>Designs</li><li>Reels</li><li>Shorts</li></ul>
+          </li>
+        </ol>
+      </div>
+
+      <div class="jw__outro">
+        <p class="h2">Every step leaves a <em>mark.</em></p>
+        <p class="ar" lang="ar" dir="rtl">كل خطوة… بتسيب أثر.</p>
+      </div>
+
+      <span class="iris" aria-hidden="true"></span>
+      <div class="sun sun--after" aria-hidden="true"><video muted playsinline loop preload="none" poster="assets/video/sun-poster.webp"><source src="assets/video/sun.mp4" type="video/mp4"></video></div>
+      <div class="jw__after">
+        <p class="h2">Now they remember you<span class="pdot" data-pdot="after" aria-hidden="true"></span><span class="sr">.</span></p>
+        <p class="ar" lang="ar" dir="rtl">ودلوقتي… بيفتكروك.</p>
+      </div>
+
+      <span class="trail" data-trail="drop" aria-hidden="true"></span>
+      <span class="actor" data-actor="jw" aria-hidden="true"></span>
     </div>
   </section>
 
-  <!-- ============ JOURNEY ============ -->
-  <section class="journey" id="journey" aria-labelledby="journey-title">
-    <div class="wrap journey__head">
-      <span class="ghost" aria-hidden="true" data-ghost>07</span>
-      <div class="shead"><span class="sec-anchor" aria-hidden="true"></span><p class="slabel" data-slabel><span>(02)</span><span>Seven stations</span></p></div>
-      <div class="journey__headrow">
-        <h2 class="h2" id="journey-title" data-chars>The journey.</h2>
-        <p class="ar" lang="ar" dir="rtl" data-fade>سبع محطات، بالترتيب.</p>
+  <!-- ================= 03 · THE WORK — عدسة أثر ================= -->
+  <section class="s-work" id="work" data-theme="light" data-chap="2" aria-labelledby="work-title">
+    <div class="pin wk">
+      <div class="wrap wk__head">
+        <p class="slabel"><span>(03)</span><span>Content we make</span></p>
+        <h2 class="h2" id="work-title">Content we make.</h2>
+        <p class="ar" lang="ar" dir="rtl">كل براند… وله أسلوبه.</p>
       </div>
-    </div>
 
-    <div class="jr" data-journey>
-      <div class="jr__stage">
-        <p class="jr__ghost" aria-hidden="true"><span class="jr__groll"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span></span></p>
-        <p class="jr__count" aria-hidden="true"><span class="jr__roll"><span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span></span><span class="jr__of">/ 07</span></p>
+      <div class="wk__stage">
+        <ol class="wk__index" aria-label="Brands">
+          <li><button type="button" data-go="0">Marsa Coffee</button></li>
+          <li><button type="button" data-go="1">Stack Burger</button></li>
+          <li><button type="button" data-go="2">Sukkar Bakery</button></li>
+          <li><button type="button" data-go="3">Qahwa Kart</button></li>
+          <li><button type="button" data-go="4">Ismailawy</button></li>
+          <li><button type="button" data-go="5">Nūr</button></li>
+          <li><button type="button" data-go="6">Layl</button></li>
+          <li><button type="button" data-go="7">Dr. Salma</button></li>
+          <li><button type="button" data-go="8">Layali Ramadan</button></li>
+          <li><button type="button" data-go="9">Masari</button></li>
+          <li><button type="button" data-go="10">Nile Design Forum</button></li>
+          <li><button type="button" data-go="11">Ward</button></li>
+          <li><button type="button" data-go="12">Nahla</button></li>
+          <li><button type="button" data-go="13">Karkadé</button></li>
+          <li><button type="button" data-go="14">El Zaeem</button></li>
+          <li><button type="button" data-go="15">Iron House</button></li>
+        </ol>
 
-        <div class="jr__steps">
-
-          <!-- 01 · CALL -->
-          <article class="stp" data-label="Call">
-            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <img src="assets/img/journey/s1-call.webp" alt="A hand taking notes beside a phone during a call" width="1200" height="1500" loading="lazy" decoding="async">
-              <svg class="mg mg--call" viewBox="0 0 400 500" aria-hidden="true">
-                <text class="mg__tx" x="40" y="338">LISTENING</text>
-                <line class="mg__l" x1="40" y1="410" x2="360" y2="410"/>
-                <g class="mg__eq"></g>
-                <rect class="mg__acc" x="35" y="405" width="10" height="10" transform="rotate(45 40 410)"/>
-              </svg>
-            </figure>
-            <div class="stp__text">
-              <p class="stp__n">01</p>
-              <h3 class="stp__t">The call.</h3>
-              <p class="ar" lang="ar" dir="rtl">بنبدأ بمكالمة… بنفهم منك كل تفصيلة عن البيزنس بتاعك.</p>
-              <ul class="stp__outs"><li>Goals</li><li>Budget</li><li>Pain points</li></ul>
-            </div>
-          </article>
-
-          <!-- 02 · AUDIT -->
-          <article class="stp" data-label="Audit">
-            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <img src="assets/img/journey/s2-audit.webp" alt="Brand materials laid out on a dark table for review" width="1200" height="1500" loading="lazy" decoding="async">
-              <svg class="mg mg--audit" viewBox="0 0 400 500" aria-hidden="true">
-                <text class="mg__tx" x="40" y="322">WEAKNESS</text>
-                <text class="mg__tx mg__tx--end" x="360" y="322">STRENGTH</text>
-                <line class="mg__l" x1="200" y1="312" x2="200" y2="462"/>
-                <rect class="mg__b mg__b--r" x="200" y="338" width="132" height="6"/>
-                <rect class="mg__b mg__b--l" x="122" y="338" width="78" height="6"/>
-                <rect class="mg__b mg__b--r" x="200" y="370" width="96" height="6"/>
-                <rect class="mg__b mg__b--l mg__b--acc" x="58" y="370" width="142" height="6"/>
-                <rect class="mg__b mg__b--r" x="200" y="402" width="150" height="6"/>
-                <rect class="mg__b mg__b--l" x="150" y="402" width="50" height="6"/>
-                <rect class="mg__b mg__b--r" x="200" y="434" width="64" height="6"/>
-                <rect class="mg__b mg__b--l" x="104" y="434" width="96" height="6"/>
-              </svg>
-            </figure>
-            <div class="stp__text">
-              <p class="stp__n">02</p>
-              <h3 class="stp__t">Brand audit.</h3>
-              <p class="ar" lang="ar" dir="rtl">ندرس براندك: نقاط القوة، ونقاط الضعف.</p>
-              <ul class="stp__outs"><li>Strengths</li><li>Weaknesses</li><li>Voice</li></ul>
-            </div>
-          </article>
-
-          <!-- 03 · MARKET -->
-          <article class="stp" data-label="Market">
-            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <img src="assets/img/journey/s3-market.webp" alt="Printed competitor posts arranged on a table" width="1200" height="1500" loading="lazy" decoding="async">
-              <svg class="mg mg--market" viewBox="0 0 400 500" aria-hidden="true">
-                <path class="mg__l" d="M40 316 V462 H360"/>
-                <g class="mg__dots">
-                  <circle cx="92" cy="430" r="5"/><circle cx="112" cy="418" r="5"/><circle cx="104" cy="442" r="5"/><circle cx="128" cy="434" r="5"/>
-                  <circle cx="122" cy="404" r="5"/><circle cx="142" cy="420" r="5"/><circle cx="86" cy="408" r="5"/><circle cx="150" cy="442" r="5"/>
-                  <circle cx="138" cy="396" r="5"/><circle cx="160" cy="410" r="5"/><circle cx="98" cy="388" r="5"/><circle cx="72" cy="424" r="5"/>
-                </g>
-                <path class="mg__l mg__l--dash" d="M150 404 L312 340"/>
-                <rect class="mg__acc" x="314" y="330" width="12" height="12" transform="rotate(45 320 336)"/>
-                <text class="mg__tx" x="300" y="318">GAP</text>
-              </svg>
-            </figure>
-            <div class="stp__text">
-              <p class="stp__n">03</p>
-              <h3 class="stp__t">Market &amp; rivals.</h3>
-              <p class="ar" lang="ar" dir="rtl">ندرس السوق والمنافسين… ونلاقي الفجوة.</p>
-              <ul class="stp__outs"><li>Competitors</li><li>Gaps</li><li>Opportunities</li></ul>
-            </div>
-          </article>
-
-          <!-- 04 · AUDIENCE -->
-          <article class="stp" data-label="Audience">
-            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <img src="assets/img/journey/s4-audience.webp" alt="People inside a café seen through the window at dusk" width="1200" height="1500" loading="lazy" decoding="async">
-              <svg class="mg mg--audience" viewBox="0 0 400 500" aria-hidden="true">
-                <circle class="mg__l" cx="200" cy="390" r="74"/>
-                <circle class="mg__l" cx="200" cy="390" r="48"/>
-                <circle class="mg__l" cx="200" cy="390" r="22"/>
-                <g class="mg__orbit">
-                  <circle class="mg__p" cx="274" cy="390" r="3.5"/><circle class="mg__p" cx="148" cy="338" r="3.5"/><circle class="mg__p" cx="170" cy="458" r="3.5"/>
-                  <circle class="mg__p" cx="234" cy="348" r="3.5"/><circle class="mg__p" cx="160" cy="410" r="3.5"/><circle class="mg__p" cx="244" cy="428" r="3.5"/>
-                </g>
-                <rect class="mg__acc" x="194" y="384" width="12" height="12" transform="rotate(45 200 390)"/>
-                <text class="mg__tx" x="40" y="322">CORE CUSTOMER</text>
-              </svg>
-            </figure>
-            <div class="stp__text">
-              <p class="stp__n">04</p>
-              <h3 class="stp__t">Your audience.</h3>
-              <p class="ar" lang="ar" dir="rtl">نعرف عميلك المستهدف… وإيه اللي يهمه فعلًا.</p>
-              <ul class="stp__outs"><li>Personas</li><li>Interests</li><li>Platforms</li></ul>
-            </div>
-          </article>
-
-          <!-- 05 · PLAN -->
-          <article class="stp" data-label="Plan">
-            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <img src="assets/img/journey/s5-plan.webp" alt="A long-term marketing plan pinned on a dark wall" width="1200" height="1500" loading="lazy" decoding="async">
-              <svg class="mg mg--plan" viewBox="0 0 400 500" aria-hidden="true">
-                <text class="mg__tx" x="40" y="322">12 MONTHS</text>
-                <rect class="mg__b mg__b--r" x="40" y="340" width="190" height="5"/>
-                <rect class="mg__b mg__b--r" x="94" y="364" width="240" height="5"/>
-                <rect class="mg__b mg__b--r mg__b--acc" x="66" y="388" width="120" height="5"/>
-                <rect class="mg__b mg__b--r" x="176" y="412" width="184" height="5"/>
-                <line class="mg__l" x1="40" y1="448" x2="360" y2="448"/>
-                <g class="mg__ticks">
-                  <line x1="40" y1="444" x2="40" y2="452"/><line x1="69" y1="444" x2="69" y2="452"/><line x1="98" y1="444" x2="98" y2="452"/><line x1="127" y1="444" x2="127" y2="452"/>
-                  <line x1="156" y1="444" x2="156" y2="452"/><line x1="185" y1="444" x2="185" y2="452"/><line x1="215" y1="444" x2="215" y2="452"/><line x1="244" y1="444" x2="244" y2="452"/>
-                  <line x1="273" y1="444" x2="273" y2="452"/><line x1="302" y1="444" x2="302" y2="452"/><line x1="331" y1="444" x2="331" y2="452"/><line x1="360" y1="444" x2="360" y2="452"/>
-                </g>
-              </svg>
-            </figure>
-            <div class="stp__text">
-              <p class="stp__n">05</p>
-              <h3 class="stp__t">The plan.</h3>
-              <p class="ar" lang="ar" dir="rtl">خطة تسويق كاملة… على المدى الطويل.</p>
-              <ul class="stp__outs"><li>Positioning</li><li>Content pillars</li><li>Calendar</li></ul>
-            </div>
-          </article>
-
-          <!-- 06 · FIX -->
-          <article class="stp" data-label="Fix">
-            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <img src="assets/img/journey/s6-fix.webp" alt="A phone with a social profile grid next to red-pen corrections" width="1200" height="1500" loading="lazy" decoding="async">
-              <svg class="mg mg--fix" viewBox="0 0 400 500" aria-hidden="true">
-                <circle class="mg__l" cx="58" cy="334" r="16"/>
-                <line class="mg__l" x1="88" y1="328" x2="196" y2="328"/>
-                <line class="mg__l mg__l--old" x1="88" y1="344" x2="168" y2="344"/>
-                <line class="mg__l mg__l--acc" x1="88" y1="352" x2="182" y2="352"/>
-                <g class="mg__grid">
-                  <rect x="232" y="318" width="40" height="40"/><rect x="276" y="318" width="40" height="40"/><rect x="320" y="318" width="40" height="40"/>
-                  <rect x="232" y="362" width="40" height="40"/><rect class="is-fix" x="276" y="362" width="40" height="40"/><rect x="320" y="362" width="40" height="40"/>
-                  <rect x="232" y="406" width="40" height="40"/><rect x="276" y="406" width="40" height="40"/><rect class="is-fix" x="320" y="406" width="40" height="40"/>
-                </g>
-                <path class="mg__l mg__l--acc" d="M287 382 l7 7 l13 -14"/>
-                <path class="mg__l mg__l--acc" d="M331 426 l7 7 l13 -14"/>
-                <text class="mg__tx" x="40" y="446">BIO · HIGHLIGHTS · GRID</text>
-              </svg>
-            </figure>
-            <div class="stp__text">
-              <p class="stp__n">06</p>
-              <h3 class="stp__t">Fix the pages.</h3>
-              <p class="ar" lang="ar" dir="rtl">نصحّح كل عيب تسويقي في صفحاتك.</p>
-              <ul class="stp__outs"><li>Bio</li><li>Highlights</li><li>Grid</li></ul>
-            </div>
-          </article>
-
-          <!-- 07 · CREATE -->
-          <article class="stp" data-label="Create">
-            <figure class="stp__media"><span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-              <img src="assets/img/journey/s7-create.webp" alt="A phone on a small tripod filming a vertical video" width="1200" height="1500" loading="lazy" decoding="async">
-              <svg class="mg mg--create" viewBox="0 0 400 500" aria-hidden="true">
-                <text class="mg__tx" x="40" y="322">REELS · SHORTS</text>
-                <rect class="mg__l mg__fr" x="118" y="350" width="52" height="92" rx="7"/>
-                <rect class="mg__l mg__fr" x="172" y="336" width="58" height="104" rx="8"/>
-                <rect class="mg__l mg__fr" x="232" y="350" width="52" height="92" rx="7"/>
-                <line class="mg__l" x1="180" y1="428" x2="222" y2="428"/>
-                <line class="mg__prog" x1="180" y1="428" x2="222" y2="428"/>
-              </svg>
-            </figure>
-            <div class="stp__text">
-              <p class="stp__n">07</p>
-              <h3 class="stp__t">Create.</h3>
-              <p class="ar" lang="ar" dir="rtl">تصاميم، وريلز، وشورتس… بنظام واحد.</p>
-              <ul class="stp__outs"><li>Designs</li><li>Reels</li><li>Shorts</li></ul>
-            </div>
-          </article>
+        <div class="wk__lens">
+          <div class="wk__col" data-col>
+            <figure class="wk__it" data-name="Marsa Coffee" data-kind="Coffee · Ad"><img src="assets/img/work/t1-marsa.webp" alt="Marsa Coffee — iced Spanish latte ad" width="597" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Stack Burger" data-kind="Burger · Ad"><img src="assets/img/work/t2-stack.webp" alt="Stack Burger — Double Trouble ad" width="597" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Sukkar Bakery" data-kind="Bakery · Post"><img src="assets/img/work/t3-sukkar.webp" alt="Sukkar Bakery — Basque cheesecake post" width="597" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Qahwa Kart" data-kind="Coffee cart · Illustration"><img src="assets/img/work/d17.webp" alt="Qahwa Kart coffee cart — illustrated ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Ismailawy" data-kind="Juice · Splash ad"><img src="assets/img/work/d06.webp" alt="Ismailawy mango juice — splash ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Nūr" data-kind="Tech · Product ad"><img src="assets/img/work/d01.webp" alt="Nūr wireless earbuds — minimal product ad" width="597" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Layl" data-kind="Perfume · Luxury"><img src="assets/img/work/d03.webp" alt="Layl oud perfume — dark luxury ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Dr. Salma" data-kind="Clinic · Editorial"><img src="assets/img/work/d12.webp" alt="Dr. Salma Clinic — editorial service ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Layali Ramadan" data-kind="Event · Arabic type"><img src="assets/img/work/d14.webp" alt="Layali Ramadan night market — Arabic type poster" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Masari" data-kind="Fintech · CGI launch"><img src="assets/img/work/d04.webp" alt="Masari metal card — CGI launch visual" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Nile Design Forum" data-kind="Event · Swiss poster"><img src="assets/img/work/d11.webp" alt="Nile Design Forum — Swiss poster" width="597" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Ward" data-kind="Beauty · Product ad"><img src="assets/img/work/d02.webp" alt="Ward rose mist — quiet-luxury product ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Nahla" data-kind="Honey · Packaging"><img src="assets/img/work/d09.webp" alt="Nahla honey — packaging system" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Karkadé" data-kind="Drinks · Colour match"><img src="assets/img/work/d07.webp" alt="Karkadé iced hibiscus can — color-matched ad" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="El Zaeem" data-kind="Food · Retro poster"><img src="assets/img/work/d16.webp" alt="El Zaeem Koshary — retro poster" width="598" height="800" loading="lazy" decoding="async"></figure>
+            <figure class="wk__it" data-name="Iron House" data-kind="Gym · Typography"><img src="assets/img/work/d10.webp" alt="Iron House Gym — typographic campaign" width="598" height="800" loading="lazy" decoding="async"></figure>
+          </div>
+          <span class="wk__frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         </div>
 
-        <!-- Rail: خط الرحلة -->
-        <nav class="jr__rail" aria-label="Journey steps">
-          <span class="jr__track" aria-hidden="true"><span class="jr__fill"></span></span>
-          <ol class="jr__marks"></ol>
-          <p class="jr__swipe" aria-hidden="true"><span><b data-jr-now>01</b> / 07</span><span>Swipe →</span></p>
-        </nav>
+        <div class="wk__meta" aria-live="polite">
+          <p class="wk__count"><b data-wk-now>01</b> / 16</p>
+          <p class="wk__name" data-wk-name>Marsa Coffee</p>
+          <p class="wk__kind" data-wk-kind>Coffee · Ad</p>
+        </div>
       </div>
+
+      <p class="wrap wk__legend"><span class="tag">Concept work</span><span class="tag">Fictional brands</span></p>
     </div>
   </section>
 
-  <!-- ============ CONTENT (الشغل: تصاميم Gemini — استوديو العشرين) ============ -->
-  <section class="content" id="content" aria-labelledby="content-title">
-    <div class="wrap content__head">
-      <div class="shead"><span class="sec-anchor" aria-hidden="true"></span><p class="slabel" data-slabel><span>(03)</span><span>Content we make</span></p></div>
-      <div class="journey__headrow">
-        <h2 class="h2" id="content-title" data-chars>Content we make.</h2>
-        <p class="ar" lang="ar" dir="rtl" data-fade>كل براند… وله أسلوبه.</p>
-      </div>
-    </div>
-    <div class="gal" data-gal>
-      <div class="gal__stage">
-      <div class="gal__row" data-dir="1">
-        <figure class="g"><img src="assets/img/work/t1-marsa.webp" alt="Marsa Coffee — iced Spanish latte ad" width="597" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/t2-stack.webp" alt="Stack Burger — Double Trouble ad" width="597" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/t3-sukkar.webp" alt="Sukkar Bakery — Basque cheesecake post" width="597" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d17.webp" alt="Qahwa Kart coffee cart — illustrated ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d06.webp" alt="Ismailawy mango juice — splash ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d01.webp" alt="Nūr wireless earbuds — minimal product ad" width="597" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d03.webp" alt="Layl oud perfume — dark luxury ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d12.webp" alt="Dr. Salma Clinic — editorial service ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d14.webp" alt="Layali Ramadan night market — Arabic type poster" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d18.webp" alt="Bizra kids savings — concept ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d05.webp" alt="Shams Shield SPF50 — photo manipulation ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-      </div>
-      <div class="gal__row" data-dir="-1">
-        <figure class="g"><img src="assets/img/work/d04.webp" alt="Masari metal card — CGI launch visual" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d11.webp" alt="Nile Design Forum — Swiss poster" width="597" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d15.webp" alt="Taallam learning platform — collage poster" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g g--wide"><img src="assets/img/work/d19.webp" alt="Mowg North Coast — billboard" width="1433" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d02.webp" alt="Ward rose mist — quiet-luxury product ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d20.webp" alt="Haraka physiotherapy — service post" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d09.webp" alt="Nahla honey — packaging system" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d07.webp" alt="Karkadé iced hibiscus can — color-matched ad" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d16.webp" alt="El Zaeem Koshary — retro poster" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d08.webp" alt="Sabbahy breakfast box — flat lay" width="598" height="800" loading="lazy" decoding="async"></figure>
-        <figure class="g"><img src="assets/img/work/d10.webp" alt="Iron House Gym — typographic campaign" width="598" height="800" loading="lazy" decoding="async"></figure>
-      </div>
-      </div>
-    </div>
-    <div class="wrap gal__legend" data-fade>
-      <span class="tag">Concept work</span><span class="tag">Fictional brands</span>
-    </div>
-  </section>
-
-  <!-- ============ SYSTEMS (بارتيشن صغير) ============ -->
-  <section class="systems" id="systems" aria-labelledby="systems-title">
+  <!-- ================= 04 · SYSTEMS (بارتيشن صغير) ================= -->
+  <section class="s-systems" id="systems" data-theme="light" data-chap="3" aria-labelledby="systems-title">
     <div class="wrap">
-      <div class="systems__bar"><span class="systems__rule" aria-hidden="true"></span><p class="slabel" data-slabel><span>(04)</span><span>Also, when you need it</span></p></div>
+      <div class="systems__bar"><span class="systems__rule" aria-hidden="true"></span><p class="slabel"><span>(04)</span><span>Also, when you need it</span></p></div>
       <div class="systems__head">
         <h2 class="h3" id="systems-title" data-chars>Systems that support the marketing.</h2>
-        <p class="ar" lang="ar" dir="rtl" data-fade>مواقع، ومنيوهات، وأنظمة طلبات.</p>
+        <p class="ar" lang="ar" dir="rtl">مواقع، ومنيوهات، وأنظمة طلبات.</p>
       </div>
-
       <div class="sys" data-sys>
         <div class="sys__item">
           <span class="sys__frame"><img src="assets/img/friends.webp" alt="Friends" width="860" height="1720" loading="lazy" decoding="async"></span>
@@ -362,43 +255,36 @@
         </div>
         <a class="sys__item" href="https://glancecoffee.github.io/" target="_blank" rel="noopener" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/glance.webp" alt="Glancé" width="860" height="1720" loading="lazy" decoding="async"></span>
-          <span class="sys__cap"><span class="sys__name">Glancé</span></span>
+          <span class="sys__cap"><span class="sys__name">Glancé</span><svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
         </a>
         <a class="sys__item" href="case-luxury-crop.html" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/lc-home.webp" alt="Luxury Crop — menu and ordering" width="860" height="1720" loading="lazy" decoding="async" style="view-transition-name: lc-shot"></span>
-          <span class="sys__cap"><span class="sys__name">Luxury Crop</span></span>
+          <span class="sys__cap"><span class="sys__name">Luxury Crop</span><svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
         </a>
         <a class="sys__item" href="https://la-rouche.github.io/" target="_blank" rel="noopener" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/larouche.webp" alt="La Rouche" width="860" height="1720" loading="lazy" decoding="async"></span>
-          <span class="sys__cap"><span class="sys__name">La Rouche</span></span>
+          <span class="sys__cap"><span class="sys__name">La Rouche</span><svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
         </a>
         <a class="sys__item" href="https://a7madshiref001-ctrl.github.io/areeb-menu/" target="_blank" rel="noopener" data-cursor="Open">
           <span class="sys__frame"><img src="assets/img/areeb.webp" alt="Areeb" width="860" height="1720" loading="lazy" decoding="async"></span>
-          <span class="sys__cap"><span class="sys__name">Areeb</span></span>
+          <span class="sys__cap"><span class="sys__name">Areeb</span><svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></span>
         </a>
       </div>
     </div>
   </section>
 
-  <div class="marq" data-marq data-dir="-1" aria-hidden="true">
-    <div class="marq__track"><p class="marq__row"><span>Strategy</span><i class="dm"></i><span class="m">Content</span><i class="dm"></i><span>Reels</span><i class="dm"></i><span class="m">Shorts</span><i class="dm"></i><span>Growth</span><i class="dm"></i><span class="m">Recognition</span><i class="dm"></i></p><p class="marq__row"><span>Strategy</span><i class="dm"></i><span class="m">Content</span><i class="dm"></i><span>Reels</span><i class="dm"></i><span class="m">Shorts</span><i class="dm"></i><span>Growth</span><i class="dm"></i><span class="m">Recognition</span><i class="dm"></i></p></div>
-  </div>
-
-  <!-- ============ CTA ============ -->
-  <section class="cta" id="contact" aria-labelledby="cta-title">
-    <span class="cta__beam" aria-hidden="true"></span>
-    <canvas class="dust" aria-hidden="true"></canvas>
-    <div class="cta__anchor" aria-hidden="true">
-      <span class="anchor-line"></span>
-      <span class="anchor-dms"><i class="dm"></i><i class="dm"></i><i class="dm"></i></span>
-    </div>
+  <!-- ================= 05 · THE CALL ================= -->
+  <section class="s-cta" id="contact" data-theme="light" data-chap="4" aria-labelledby="cta-title">
+    <div class="sun sun--cta" aria-hidden="true"><video muted playsinline loop preload="none" poster="assets/video/sun-poster.webp"><source src="assets/video/sun.mp4" type="video/mp4"></video></div>
+    <div class="cta__anchor" aria-hidden="true"><span class="anchor-line"></span></div>
+    <span class="actor" data-actor="cta" aria-hidden="true"></span>
     <div class="wrap cta__body">
-      <p class="slabel" data-slabel><span>(05)</span><span>Step 01 — always</span></p>
+      <p class="slabel"><span>(05)</span><span>Step 01 — always</span></p>
       <h2 class="cta__title" id="cta-title">
         <span class="mask"><span class="ln">Start with</span></span>
-        <span class="mask"><span class="ln">a <em class="hero-word">call.</em></span></span>
+        <span class="mask"><span class="ln">a <em class="hero-word">call</em><span class="pdot" data-pdot="cta" aria-hidden="true"></span><span class="sr">.</span></span></span>
       </h2>
-      <div class="hero__row cta__row">
+      <div class="cta__row">
         <a class="btn btn--lg" data-magnet href="https://wa.me/201016739509?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AD%D8%A7%D8%A8%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D9%85%D9%83%D8%A7%D9%84%D9%85%D8%A9%20%D9%85%D8%B9%20%D8%A3%D8%AB%D8%B1." target="_blank" rel="noopener">
           <svg class="ic" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg>
           <span>Book the call</span>
@@ -410,7 +296,7 @@
   </section>
 </main>
 
-<footer class="foot">
+<footer class="foot" data-theme="dark">
   <div class="wrap foot__cols">
     <div class="foot__col foot__col--lead">
       <a class="logo" href="#top" aria-label=".ATHR — back to top"><span class="logo__dot">.</span>ATHR</a>
@@ -431,7 +317,7 @@
       <a class="foot__top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </div>
-  <p class="foot__giant" aria-hidden="true"><span class="fg"><span class="fg__dot">.</span></span><span class="fg">A</span><span class="fg">T</span><span class="fg">H</span><span class="fg">R</span></p>
+  <p class="foot__giant" aria-hidden="true"><span class="fg fg--dot"><i class="fg__dm"></i></span><span class="fg">A</span><span class="fg">T</span><span class="fg">H</span><span class="fg">R</span></p>
   <div class="wrap foot__in">
     <p>© 2026 · .ATHR</p>
     <p class="foot__dms" aria-hidden="true"><i class="dm"></i><i class="dm"></i><i class="dm"></i></p>
@@ -445,6 +331,6 @@
 <script src="assets/vendor/DrawSVGPlugin.min.js"></script>
 <script src="assets/vendor/CustomEase.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="assets/js/site.js?v=4.4"></script>
+<script src="assets/js/v5.js?v=5.12"></script>
 </body>
 </html>
