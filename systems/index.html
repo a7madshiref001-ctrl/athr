@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Systems — .ATHR</title>
+<meta name="description" content="مش منيو… ده سيستم. 4 أنظمة حقيقية اتبنت لأماكن حقيقية: منيو بيطلب، ولوحة بتدير المكان. اتفرّج وجرّب بإيدك.">
+<meta name="theme-color" content="#F7F5F2">
+<meta property="og:type" content="website">
+<meta property="og:title" content="مش منيو… ده سيستم. — .ATHR Systems">
+<meta property="og:description" content="4 أنظمة حقيقية: منيو بيطلب ويقترح، ولوحة بتدير الطلبات والعروض والأرقام. جرّبها بإيدك.">
+<meta property="og:image" content="https://a7madshiref001-ctrl.github.io/athr/systems/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/alexandria-arabic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/systems.css?v=1">
+<link rel="stylesheet" href="assets/film.css?v=1">
+<link rel="stylesheet" href="assets/lab.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main">انزل للمحتوى</a>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="../" aria-label=".ATHR — الرئيسية"><span class="logo__w"><i></i>ATHR</span><span class="logo__s">Systems</span></a>
+    <nav class="nav__links" aria-label="أقسام الصفحة">
+      <a href="#film">الفيديو</a>
+      <a href="#work">الأنظمة</a>
+      <a href="#lab">جرّب اللوحة</a>
+      <a href="#caps">كل الإمكانيات</a>
+      <a href="#how">إزاي بنبنيه</a>
+    </nav>
+    <a class="btn btn--sm" data-ig href="#" target="_blank" rel="noopener"><span data-ic="insta"></span>كلّمني</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO + الفيديو ============ -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="hello" id="hello" hidden><span class="dm"></span><span>أهلاً <b id="helloName"></b> — دي الصفحة اللي كلّمتك عنها.</span></p>
+      <div class="hero__top">
+        <div>
+          <h1>مش منيو…<span class="l2">ده سيستم<span class="pdot"></span></span></h1>
+          <p class="hero__en en">Not a menu. A system.</p>
+        </div>
+        <div class="hero__side">
+          <p class="lede">4 أنظمة شغّالة اتبنت لأماكن حقيقية. اتفرّج على الدقيقة دي، وبعدين جرّب لوحة صاحب المكان بإيدك.</p>
+          <p class="hero__meta"><span><span class="dm"></span>منيو بيطلب ويقترح</span><span><span class="dm"></span>لوحة بتدير المكان</span><span><span class="dm"></span>بهوية مكانك</span></p>
+        </div>
+      </div>
+
+      <div class="player" id="film" aria-label="فيديو بيشرح الأنظمة في دقيقة">
+        <div class="player__frame" id="filmFrame" tabindex="0" aria-label="الفيديو — اضغط مسافة للتشغيل أو الإيقاف">
+          <div class="stage" id="stage" aria-hidden="true"></div>
+          <button class="player__big" id="filmBig" type="button" aria-label="شغّل الفيديو"><span data-ic="play"></span></button>
+          <button class="pfs-x" id="filmPfsX" type="button" aria-label="اخرج من ملء الشاشة"><span data-ic="x"></span></button>
+          <div class="player__end" id="filmEnd" hidden>
+            <p>دي 4 أنظمة حقيقية. جرّبها بإيدك<span class="pdot"></span></p>
+            <div><a class="btn" href="#lab">جرّب اللوحة<span data-ic="down"></span></a><button class="btn btn--ghost" type="button" id="filmReplay"><span data-ic="replay"></span>من الأول</button></div>
+          </div>
+        </div>
+        <div class="player__cap" id="filmCap" aria-live="polite"><div class="pcap__in"></div></div>
+        <div class="player__bar">
+          <button class="pb-btn" id="filmPlay" type="button" aria-label="شغّل"><span data-ic="play"></span></button>
+          <div class="pb-track" id="filmTrack" role="slider" aria-label="مكان الفيديو" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"></div>
+          <span class="pb-time" id="filmTime">0:00 / 1:02</span>
+          <button class="pb-btn pb-btn--ghost" id="filmFs" type="button" aria-label="ملء الشاشة"><span data-ic="max"></span></button>
+        </div>
+        <ol class="chaps" id="filmChaps" aria-label="أجزاء الفيديو"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 · الأنظمة ============ -->
+  <section class="sec" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="slabel"><span>The work</span><b>(01)</b></p>
+        <div class="sec-head__row">
+          <h2 class="h2 rv" id="work-h">4 أنظمة… اتبنت فعلًا<span class="pdot"></span></h2>
+          <p class="note rv"><span class="dm"></span>الأرقام اللي جوه اللوحات تجريبية للتوضيح</p>
+        </div>
+        <p class="lede rv">دي مش تصميمات على الورق. كل واحد منهم سيستم شغّال: منيو للزبون على موبايله، ولوحة لصاحب المكان بيدير منها كل حاجة.</p>
+      </header>
+      <div class="cases" id="cases"></div>
+    </div>
+  </section>
+
+  <!-- ============ 02 · جرّب اللوحة ============ -->
+  <section class="sec lab" id="lab" aria-labelledby="lab-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="slabel"><span>Try it yourself</span><b>(02)</b></p>
+        <div class="sec-head__row">
+          <h2 class="h2 rv" id="lab-h">جرّب اللوحة بإيدك<span class="pdot"></span></h2>
+          <p class="note rv"><span class="dm"></span>بيانات تجريبية — جرّب براحتك، مفيش حاجة بتتبعت لحد</p>
+        </div>
+        <p class="lede rv">دي لوحة صاحب المكان. غيّر سعر، اقفل صنف، اعمل عرض، استقبل طلب — وشوف التغيير بيوصل لموبايل الزبون في نفس اللحظة.</p>
+      </header>
+      <div class="labx" id="labx"></div>
+    </div>
+  </section>
+
+  <!-- ============ 03 · كل الإمكانيات ============ -->
+  <section class="sec" id="caps" aria-labelledby="caps-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="slabel"><span>Everything it can do</span><b>(03)</b></p>
+        <div class="sec-head__row">
+          <h2 class="h2 rv" id="caps-h">كل اللي السيستم بيعمله<span class="pdot"></span></h2>
+          <p class="capcount rv"><span class="num" id="capCount">0</span></p>
+        </div>
+        <p class="lede rv">متقسّمة على الأسئلة اللي أي صاحب مكان بيسألها. وكل إمكانية مكتوب جنبها الأنظمة اللي فيها فعلًا.</p>
+      </header>
+      <div class="capf" id="capf" role="tablist" aria-label="فلتر الإمكانيات"></div>
+      <div id="caplist"></div>
+    </div>
+  </section>
+
+  <!-- ============ 04 · إزاي بنبنيه ============ -->
+  <section class="sec" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="slabel"><span>How we build it</span><b>(04)</b></p>
+        <h2 class="h2 rv" id="how-h">إزاي بنبني سيستم مكانك<span class="pdot"></span></h2>
+        <p class="lede rv">نفس الخطوات اللي اتبنت بيها الأنظمة اللي فوق.</p>
+      </header>
+      <ol class="steps">
+        <li class="step rv"><b>01</b><h4>نفهم مكانك</h4><p>مكالمة نعرف فيها بتبيع إيه، وزباينك مين، والطلب بيمشي إزاي النهارده.</p></li>
+        <li class="step rv"><b>02</b><h4>نجمع المنيو</h4><p>الأصناف والأسعار والأقسام من المنيو اللي عندك — ولو مفيش صور، نعمل صور بنفس الإضاءة لكل الأصناف.</p></li>
+        <li class="step rv"><b>03</b><h4>نلبّسه هويتك</h4><p>ألوانك وخطك ولوجوك. السيستم يبان إنه معمول لمكانك، مش قالب جاهز.</p></li>
+        <li class="step rv"><b>04</b><h4>تجرّبه قبل ما يشتغل</h4><p>نسخة تجريبية تلعب فيها إنت والكاشير، ونعدّل لحد ما يمشي زي ما إنت عايز.</p></li>
+        <li class="step rv"><b>05</b><h4>يشتغل ونتابع</h4><p>QR على الطاولات، ونعلّم الفريق اللوحة، ونفضل معاك نشوف الأرقام.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="talk" aria-labelledby="talk-h">
+    <div class="wrap">
+      <h2 id="talk-h" class="rv">مكانك يستاهل سيستم،<br>مش منيو<span class="pdot"></span></h2>
+      <p class="rv">ابعتلي كلمة «سيستم» على انستجرام، وهنكمّل من هناك.</p>
+      <a class="btn btn--lg rv" data-ig href="#" target="_blank" rel="noopener"><span data-ic="insta"></span>ابعتلي على انستجرام</a>
+      <small class="rv" id="igHandle"></small>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a class="logo" href="../"><span class="logo__w"><i></i>ATHR</span><span class="logo__s">Systems</span></a>
+    <p>الأرقام في كل اللوحات تجريبية للتوضيح. الأصناف والأسعار والصور من الأنظمة الحقيقية.</p>
+  </div>
+</footer>
+
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="assets/icons.js?v=1"></script>
+<script src="assets/data.js?v=1"></script>
+<script src="assets/film.js?v=1"></script>
+<script src="assets/qr-data.js?v=1"></script>
+<script src="assets/lab.js?v=1"></script>
+<script src="assets/page.js?v=1"></script>
+</body>
+</html>
