@@ -120,6 +120,7 @@
     return "ok";
   }
   var MST = { ok: ["ساري", "t-done"], soon: ["بيخلص قريب", "t-conf"], exp: ["خلص", "t-new"], frz: ["متجمّد", "t-prep"] };
+  function fdateEn(ms) { var x = new Date(ms); return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][x.getMonth()] + " " + x.getDate(); }
   function fdate(ms) { var x = new Date(ms); return x.getDate() + " " + ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"][x.getMonth()]; }
   function ftime(ms) { var x = new Date(ms), h = x.getHours(), m = x.getMinutes(); return (h % 12 || 12) + ":" + (m < 10 ? "0" : "") + m + (h < 12 ? " ص" : " م"); }
 
@@ -141,20 +142,20 @@
      ====================================================================== */
   var TOUR = {
     cafe: [
-      { k: "order", mod: "orders", t: "ابعت طلب من موبايل الزبون", h: "دوس «+» على أي صنف في الموبايل وابعته — أو «طلب تجريبي» هنا.", f: "الطلب بيوصلك مكتوب ومتحسب بجرس، من غير مكالمات ولا غلط." },
-      { k: "advance", mod: "orders", t: "حرّك الطلب: ابدأ التجهيز ← اتسلّم", h: "من كارت الطلب الجديد.", f: "الزبون عارف طلبه فين، وإنت عارف إيه اللي اتأخر." },
-      { k: "offer", mod: "offers", t: "غيّر صورة العرض ودوس «انشر»", h: "اختار صورة تانية وغيّر السعر لو تحب.", f: "المنيو بيتغيّر عند كل الزباين في نفس اللحظة." },
-      { k: "sold", mod: "menu", t: "اقفل صنف خلص", h: "من مفتاح «متاح» جنب أي صنف.", f: "محدش يطلب حاجة مش موجودة." },
-      { k: "price", mod: "menu", t: "غيّر سعر أي صنف", h: "اكتب السعر الجديد ودوس Enter.", f: "من غير ما تطبع منيو جديد." },
-      { k: "complaint", mod: "reviews", t: "قيّم من الموبايل بنجمتين", h: "من «قيّمنا» تحت في الموبايل، واكتب سبب.", f: "الشكوى بتوصلك إنت الأول، مش لجوجل." },
-      { k: "numbers", mod: "home", t: "شوف الأرقام", h: "افتح «الرئيسية».", f: "تعرف إيه اللي بيكسب، وإيه اللي محتاج قرار منك." }
+      { k: "order", mod: "orders", t: "Send an order from the customer’s phone", h: "Tap “+” on any item and send it — or press “طلب تجريبي”.", f: "Orders arrive clear and priced, with a bell." },
+      { k: "advance", mod: "orders", t: "Move the order along", h: "Use the buttons on the new order card.", f: "Everyone knows where each order is." },
+      { k: "offer", mod: "offers", t: "Change the offer photo, then publish", h: "Pick another photo and press “انشر”.", f: "Every customer sees the new offer right away." },
+      { k: "sold", mod: "menu", t: "Mark an item as sold out", h: "Use the switch next to any item.", f: "Nobody orders what you don’t have." },
+      { k: "price", mod: "menu", t: "Change a price", h: "Type a new price and press Enter.", f: "No reprinting menus." },
+      { k: "complaint", mod: "reviews", t: "Give 2 stars from the phone", h: "Open “قيّمنا” on the phone and write why.", f: "Complaints reach you first, not Google." },
+      { k: "numbers", mod: "home", t: "Check your numbers", h: "Open “الرئيسية”.", f: "See what sells and what needs a decision." }
     ],
     gym: [
-      { k: "checkin", mod: "checkin", t: "سجّل دخول عضو بكوده", h: "اكتب 1024 أو اختار من الأكواد السريعة.", f: "الجلسة بتتخصم لوحدها، وموبايل العضو بيتحدّث." },
-      { k: "freeze", mod: "members", t: "جمّد اشتراك عضو", h: "افتح أي عضو ودوس «جمّد».", f: "تاريخ الانتهاء بيتمد لوحده — من غير حسابات." },
-      { k: "msg", mod: "msgs", t: "ابعت رسالة للي اشتراكهم بيخلص", h: "القايمة جاهزة والرسالة باسم كل عضو.", f: "تجديد أكتر، من غير ما حد يفتكر." },
-      { k: "branch", mod: "home", t: "بدّل بين الفرعين", h: "من المفتاح اللي فوق في لوحة القيادة.", f: "تشوف كل فرع لوحده أو الاتنين مع بعض." },
-      { k: "close", mod: "cash", t: "قفّل اليوم", h: "اكتب اللي في الدرج ودوس «قفّل».", f: "تعرف الفرق في نفس اليوم، مش آخر الشهر." }
+      { k: "checkin", mod: "checkin", t: "Check a member in with their code", h: "Type 1024 or pick a quick code.", f: "The session is counted and the member’s phone updates." },
+      { k: "freeze", mod: "members", t: "Freeze a membership", h: "Open any member and press “جمّد”.", f: "The end date moves by itself." },
+      { k: "msg", mod: "msgs", t: "Message members whose plan is ending", h: "The list and the message are ready.", f: "More renewals, no manual work." },
+      { k: "branch", mod: "home", t: "Switch between branches", h: "Use the switch at the top of “لوحة القيادة”.", f: "See each branch alone, or both together." },
+      { k: "close", mod: "cash", t: "Close the day", h: "Type what’s in the drawer and press “قفّل اليوم”.", f: "Spot any difference the same day." }
     ]
   };
   function steps() { return TOUR[st.gym ? "gym" : "cafe"]; }
@@ -163,7 +164,7 @@
     var s = steps().filter(function (x) { return x.k === k; })[0];
     if (!s) return;
     st.tour[k] = true;
-    toast("تمام — " + s.t, s.f);
+    toast("Done — " + s.t, s.f);
     renderCoach();
   }
 
@@ -196,15 +197,15 @@
     var b = st.b;
     root.innerHTML =
       '<div class="lx' + (st.gym ? " gym" : "") + '" id="lx">' +
-        '<div class="lx__brands" role="tablist" aria-label="اختار المكان">' + S.order.map(function (id) {
+        '<div class="lx__brands" role="tablist" aria-label="Pick a place">' + S.order.map(function (id) {
           var x = S.brands[id];
-          return '<button type="button" role="tab" aria-selected="' + (id === st.id) + '" class="' + (id === st.id ? "on" : "") + '" data-act="brand" data-v="' + id + '">' + bmark(x) + "<span><b>" + esc(x.name) + "</b><small>" + esc(x.tag) + " · " + (x.type === "gym" ? "8 وحدات" : "12 وحدة") + "</small></span></button>";
+          return '<button type="button" role="tab" aria-selected="' + (id === st.id) + '" class="' + (id === st.id ? "on" : "") + '" data-act="brand" data-v="' + id + '">' + bmark(x) + "<span><b>" + esc(x.nameEn) + "</b><small>" + esc(x.tagEn) + " · " + (x.type === "gym" ? "8 modules" : "12 modules") + "</small></span></button>";
         }).join("") + "</div>" +
         '<div class="coach" id="coach"></div>' +
         '<div class="lx__body">' +
-          '<div class="win"><div class="win__bar"><i></i><i></i><i></i><span class="win__url">' + IC("lock") + (st.gym ? "نظام الإدارة" : "لوحة صاحب المكان") + " — " + esc(b.name) + '</span><span class="win__live"><i></i><span>مباشر · بيانات تجريبية</span></span></div>' +
-            '<div class="win__app"><nav class="side" id="side" aria-label="أقسام اللوحة"></nav><div class="main" id="main" tabindex="-1"></div></div></div>' +
-          '<div class="lx__phone" id="lphone"><button class="lx__phx" type="button" data-act="phclose" aria-label="اقفل">' + IC("x") + '</button><div class="lph"><div class="lph__s" id="lphs"></div></div><p class="lx__phcap" id="phcap">' + (st.gym ? "موبايل العضو · <b>بيتحدّث لوحده</b>" : "موبايل الزبون · <b>بيتحدّث لوحده</b>") + "</p></div>" +
+          '<div class="win"><div class="win__bar"><i></i><i></i><i></i><span class="win__url">' + IC("lock") + (st.gym ? "Management system" : "Owner dashboard") + " — " + esc(b.nameEn) + '</span><span class="win__live"><i></i><span>Live · demo data</span></span></div>' +
+            '<div class="win__app"><nav class="side" id="side" aria-label="Dashboard sections"></nav><div class="main" id="main" tabindex="-1"></div></div></div>' +
+          '<div class="lx__phone" id="lphone"><button class="lx__phx" type="button" data-act="phclose" aria-label="Close">' + IC("x") + '</button><div class="lph"><div class="lph__s" id="lphs"></div></div><p class="lx__phcap" id="phcap">' + (st.gym ? "Member’s phone · <b>updates live</b>" : "Customer’s phone · <b>updates live</b>") + "</p></div>" +
         "</div>" +
       "</div>";
     applyAccent();
@@ -263,9 +264,9 @@
     c.classList.toggle("is-done", !cur);
     c.innerHTML = cur ?
       '<span class="coach__n">' + (n + 1) + "/" + ss.length + '</span><div class="coach__t"><b>' + esc(cur.t) + "</b><small>" + esc(cur.h) + " — " + esc(cur.f) + "</small></div>" +
-      '<div class="coach__a"><button class="coach__go" type="button" data-act="coach">ورّيني فين</button><button class="coach__sk" type="button" data-act="skip">تخطّي</button></div>' :
-      '<span class="coach__n">' + IC("check") + '</span><div class="coach__t"><b>خلّصت الجولة — دي مش كل حاجة.</b><small>فيه ' + S.caps.length + " إمكانية متقسّمة تحت، وكل مكان بيتبني على شغله هو.</small></div>" +
-      '<div class="coach__a"><a class="coach__go" href="#caps">كل الإمكانيات</a><button class="coach__sk" type="button" data-act="retour">من الأول</button></div>';
+      '<div class="coach__a"><button class="coach__go" type="button" data-act="coach">Show me</button><button class="coach__sk" type="button" data-act="skip">Skip</button></div>' :
+      '<span class="coach__n">' + IC("check") + '</span><div class="coach__t"><b>Tour done — and there’s more.</b><small>Every place gets a system built around its own work.</small></div>' +
+      '<div class="coach__a"><a class="coach__go" href="#benefits">See the benefits</a><button class="coach__sk" type="button" data-act="retour">Start again</button></div>';
     c.innerHTML += '<div class="coach__dots">' + ss.map(function (s) { return '<i class="' + (st.tour[s.k] ? "on" : cur && s.k === cur.k ? "cur" : "") + '"></i>'; }).join("") + "</div>";
     renderSide();
   }
@@ -273,6 +274,7 @@
   /* ======================================================================
      الوحدات — كافيه/مطعم
      ====================================================================== */
+  function en$(v) { return n2(v) + " " + (st.b.curEn || "SAR"); }
   function cur$(v) { return n2(v) + " " + (st.b.cur || "ر.س"); }
   function mh(t, p, a) { return '<div class="mh"><div><h3>' + t + "</h3>" + (p ? "<p>" + p + "</p>" : "") + '</div><div class="mh__a">' + (a || "") + "</div></div>"; }
   var MODE = { table: "طاولة", take: "سفري", deliv: "توصيل" };
@@ -815,7 +817,7 @@
     else if (o.st === "pay") st.pay.wait.unshift(o);
     else st.orders.unshift(o);
     chime(); st.ring = true; setTimeout(function () { st.ring = false; }, 2000);
-    if (o.st === "new" && st.mod !== "orders" && !mobile()) toast("طلب جديد #D" + o.no + " — " + cur$(o.tot), "وصل للوحة بجرس — افتح «الطلبات».");
+    if (o.st === "new" && st.mod !== "orders" && !mobile()) toast("New order #D" + o.no + " — " + en$(o.tot), "It arrived with a bell. Open “الطلبات” to see it.");
     renderSide(); renderMain();
     setTimeout(function () { o.fresh = false; }, 6000);
   }
@@ -848,8 +850,8 @@
     renderPhone("ostat");
     done("order");
     if (o.st === "new" && st.mod !== "orders") { st.mod = "orders"; renderSide(); renderMain(); }
-    else if (o.st === "conf" && st.mod !== "guard") toast("الطلب راح «محتاج تأكيد»", "أول طلب من رقم جديد — من «الحماية» دوس «اتصلت وأكّدت».");
-    else if (o.st === "pay") toast("الطلب «مستني الدفع»", "من «الدفع» دوس «الفلوس وصلت» بعد ما تشوف إشعار محفظتك.");
+    else if (o.st === "conf" && st.mod !== "guard") toast("The order needs a call first", "First order from a new number. Confirm it in “الحماية”.");
+    else if (o.st === "pay") toast("The order is waiting for payment", "When the money arrives, confirm it in “الدفع”.");
   }
   function setStatus(no, s) {
     var o = st.orders.filter(function (x) { return x.no === no; })[0]; if (!o) return;
@@ -859,10 +861,10 @@
       var L = st.loy, P = st.ph;
       if (o.tot >= L.min && P.stamps < L.goal) {
         P.stamps++;
-        if (P.stamps >= L.goal) { P.code = (st.id === "lc" ? "LC-" : st.id === "areeb" ? "AR-" : "FR-") + (1000 + Math.floor(Math.random() * 9000)); L.codes.unshift({ c: P.code, ph: "05X ••• (إنت)", used: false }); toast("كمّلت الكارت!", "اتولّد كود مكافأة — شوفه في «كارتي» على الموبايل وفي «الولاء» هنا."); }
-        else toast("ختم جديد على كارت الزبون", "اتحسب لما الطلب اتسلّم — مش لما الزبون ضغط.");
+        if (P.stamps >= L.goal) { P.code = (st.id === "lc" ? "LC-" : st.id === "areeb" ? "AR-" : "FR-") + (1000 + Math.floor(Math.random() * 9000)); L.codes.unshift({ c: P.code, ph: "05X ••• (إنت)", used: false }); toast("The stamp card is full!", "A reward code was created — see it on the phone and in “الولاء”."); }
+        else toast("A new stamp on the customer’s card", "It counts when the order is delivered — not when the customer taps.");
         P.view = "loy"; changed("stamp");
-      } else if (o.tot < L.min) toast("الطلب أقل من حد الختم", "أقل فاتورة للختم " + L.min + " " + st.b.cur + " — تقدر تغيّرها من «الولاء».");
+      } else if (o.tot < L.min) toast("No stamp — the order is too small", "Minimum for a stamp: " + L.min + " " + st.b.curEn + ". Change it in “الولاء”.");
     }
     if (st.ph.done && st.ph.done.o === o) changed("ostat");
     renderSide(); renderMain();
@@ -900,11 +902,11 @@
       case "npic": st.newPic = v; renderMain(); break;
       case "additem":
         var nm = ($("#nwN").value || "").trim(), pr = num($("#nwP").value, 1, 999), sc = $("#nwS").value;
-        if (!nm) { $("#nwN").focus(); toast("اكتب اسم الصنف الأول"); break; }
+        if (!nm) { $("#nwN").focus(); toast("Type the item name first"); break; }
         var nid = "n" + Date.now();
         st.items.push({ id: nid, n: nm, p: pr || 15, s: sc, im: st.newPic, d: "صنف جديد", b: "", on: true, nw: true, v: 0, o: 0 });
         st.adding = false; st.msec = sc; renderMain(); st.ph.view = "menu"; st.ph.sec = sc; changed("i-" + nid);
-        toast("الصنف نزل في المنيو", "بعلامة «جديد» — والزبون يقدر يطلبه دلوقتي.");
+        toast("The new item is on the menu", "Marked “new” — customers can order it now.");
         break;
       /* العروض */
       case "opic": st.draft.im = v; renderMain(); break;
@@ -916,7 +918,7 @@
         renderMain(); st.ph.view = "menu"; st.ph.sheet = null;
         var sc2 = $(".ps__sc"); if (sc2) sc2.scrollTop = 0;
         changed("offer"); done("offer");
-        if (!changedImg) toast("العرض اتنشر", "جرّب كمان تغيّر الصورة — هتتغيّر عند كل الزباين.");
+        if (!changedImg) toast("The offer is live", "Try changing the photo too — every customer will see it.");
         break;
       /* الولاء */
       case "lgoal": st.loy.goal = Math.max(3, Math.min(10, st.loy.goal + +v)); renderMain(); st.ph.view = "loy"; changed("loy"); break;
@@ -925,23 +927,23 @@
       case "fillcode": st.loy.code = v; renderMain(); break;
       case "redeem":
         var cd = (st.loy.code || "").trim().toUpperCase(), hit = st.loy.codes.filter(function (x) { return x.c === cd; })[0];
-        if (!hit) toast("الكود ده مش موجود", "جرّب واحد من «أكواد مستنية تتصرف».");
-        else if (hit.used) toast("الكود ده اتصرف قبل كده", "كل كود بيتصرف مرة واحدة بس.");
-        else { hit.used = true; st.loy.code = ""; toast("المكافأة اتصرفت — " + hit.c, "الكود اتقفل ومحدش يقدر يستخدمه تاني."); if (hit.c === st.ph.code) { st.ph.stamps = 0; st.ph.code = ""; changed("loy"); } }
+        if (!hit) toast("This code doesn’t exist", "Try one from the list below it.");
+        else if (hit.used) toast("This code was already used", "Each code works one time only.");
+        else { hit.used = true; st.loy.code = ""; toast("Reward given — " + hit.c, "The code is now closed. Nobody can use it again."); if (hit.c === st.ph.code) { st.ph.stamps = 0; st.ph.code = ""; changed("loy"); } }
         renderMain(); break;
       /* التقييمات */
       case "rth": st.rev.th = +v; renderMain(); if (st.ph.view === "rate") changed(); break;
       case "rdone": st.rev.list[+v].done = true; st.rev.list[+v].fresh = false; renderMain(); renderSide(); break;
-      case "call": toast("في السيستم الحقيقي بيتصل على طول", "الرقم بيبان كامل لصاحب المكان بس."); break;
+      case "call": toast("In the real system, this calls the customer", "Only the owner sees the full number."); break;
       /* العملاء */
       case "seg": st.seg = v; renderMain(); break;
-      case "csv": download("customers-demo.csv", [["الاسم", "الرقم", "زيارات", "إجمالي", "آخر زيارة"]].concat(st.cust.map(function (c) { return [c.n, c.ph, c.v, c.sum, new Date(c.last).toLocaleDateString("en-GB")]; }))); toast("اتنزّل ملف Excel تجريبي"); break;
-      case "csv2": download("report-demo.csv", [["الصنف", "مشاهدات", "طلبات"]].concat(st.items.map(function (i) { return [i.n, i.v, i.o]; }))); toast("اتنزّل التقرير"); break;
+      case "csv": download("customers-demo.csv", [["الاسم", "الرقم", "زيارات", "إجمالي", "آخر زيارة"]].concat(st.cust.map(function (c) { return [c.n, c.ph, c.v, c.sum, new Date(c.last).toLocaleDateString("en-GB")]; }))); toast("Demo Excel file downloaded"); break;
+      case "csv2": download("report-demo.csv", [["الصنف", "مشاهدات", "طلبات"]].concat(st.items.map(function (i) { return [i.n, i.v, i.o]; }))); toast("Report downloaded"); break;
       /* الحماية */
       case "gtg": st.guard[v] = !st.guard[v]; renderMain(); break;
       case "gcool": st.guard.cool = Math.max(0, Math.min(300, st.guard.cool + +v)); renderMain(); break;
       case "gday": st.guard.daily = Math.max(1, Math.min(20, st.guard.daily + +v)); renderMain(); break;
-      case "gblock": var bp = (st.guard.blockIn || "").replace(/[^\d]/g, ""); if (bp.length < 8) { toast("اكتب رقم صحيح"); break; } st.guard.block.unshift("05" + bp.slice(2, 3) + " ••• " + bp.slice(-4)); st.guard.blockIn = ""; renderMain(); toast("الرقم اتحظر", "مش هيقدر يبعت طلبات تاني."); break;
+      case "gblock": var bp = (st.guard.blockIn || "").replace(/[^\d]/g, ""); if (bp.length < 8) { toast("Type a valid number"); break; } st.guard.block.unshift("05" + bp.slice(2, 3) + " ••• " + bp.slice(-4)); st.guard.blockIn = ""; renderMain(); toast("Number blocked", "It can’t send orders anymore."); break;
       case "gunblock": st.guard.block.splice(+v, 1); renderMain(); break;
       case "gconfirm": case "greject": case "paid":
         var arr = a === "paid" ? st.pay.wait : st.guard.queue, i2 = arr.map(function (x) { return x.no; }).indexOf(+v);
@@ -950,7 +952,7 @@
           oo.flag = null; oo.ref = a === "paid" ? null : oo.ref;
           oo.st = a === "greject" ? "x" : "new"; oo.fresh = a !== "greject";
           st.orders.unshift(oo);
-          toast(a === "greject" ? "الطلب اترفض ومش هيتحسب" : a === "paid" ? "الفلوس وصلت — الطلب دخل المطبخ" : "اتأكد — الطلب دخل المطبخ", a === "greject" ? "" : "لقيته في «الطلبات» بعلامة جديد.");
+          toast(a === "greject" ? "Order rejected — not counted in sales" : a === "paid" ? "Payment confirmed — the order went to the kitchen" : "Confirmed — the order went to the kitchen", a === "greject" ? "" : "You’ll find it in “الطلبات” marked new.");
           if (st.ph.done && st.ph.done.o === oo) changed("ostat");
         }
         renderSide(); renderMain(); break;
@@ -971,22 +973,22 @@
       case "cin": checkIn(); break;
       case "cundo":
         var mm = st.res && st.res.m;
-        if (mm && st.res.ok) { mm.left++; st.log.shift(); st.res.ok = null; st.lastIn = null; renderMain(); changed("ring"); toast("التسجيل اتلغى والجلسة رجعت"); }
+        if (mm && st.res.ok) { mm.left++; st.log.shift(); st.res.ok = null; st.lastIn = null; renderMain(); changed("ring"); toast("Check-in undone — the session is back"); }
         break;
       case "cshow": st.sel = st.res.m.code; changed("ring"); if (mobile()) showPhone(false); break;
       case "mfil": st.mfil = v; renderMain(); break;
       case "mopen": st.open = st.open === v ? null : v; st.sel = v; renderMain(); renderPhone(); break;
       case "frzd": st.frz = Math.max(7, Math.min(60, st.frz + +v)); renderMain(); break;
-      case "frz": var fm = memBy(v); fm.frozen = true; fm.exp += st.frz * DAY; st.sel = v; renderMain(); renderSide(); changed("exp"); done("freeze"); toast("الاشتراك اتجمّد " + st.frz + " يوم", "تاريخ الانتهاء بقى " + fdate(fm.exp) + " لوحده."); break;
-      case "unfrz": var um = memBy(v); um.frozen = false; st.sel = v; renderMain(); renderSide(); changed("exp"); toast("التجميد اتفك"); break;
+      case "frz": var fm = memBy(v); fm.frozen = true; fm.exp += st.frz * DAY; st.sel = v; renderMain(); renderSide(); changed("exp"); done("freeze"); toast("Frozen for " + st.frz + " days", "The end date moved to " + fdateEn(fm.exp) + " by itself."); break;
+      case "unfrz": var um = memBy(v); um.frozen = false; st.sel = v; renderMain(); renderSide(); changed("exp"); toast("Freeze removed"); break;
       case "renew":
         var rm = memBy(v), pl = st.plans[rm.plan], price = pl.p[rm.br] || pl.p.b2;
         rm.left = pl.s; rm.exp = Date.now() + 30 * DAY; rm.frozen = false; rm.debt = 0; st.sel = v;
         st.cash.rows.unshift(["تجديد " + pl.n + " — " + rm.n, price, "in"]);
-        renderMain(); renderSide(); changed("ring"); toast("اتجدّد — " + pl.s + " جلسة", "واتسجّل " + n2(price) + " ج في الخزنة لوحده.");
+        renderMain(); renderSide(); changed("ring"); toast("Renewed — " + pl.s + " sessions", n2(price) + " EGP was added to the cash book by itself.");
         break;
       case "mshow": st.sel = v; changed("ring"); if (mobile()) showPhone(false); break;
-      case "book": var cl = st.cls[+v]; if (cl.in < cl.cap) cl.in++; renderMain(); if (cl.in >= cl.cap) toast("الحصة اتملت واتقفلت", "مفيش حجز زيادة عن السعة."); break;
+      case "book": var cl = st.cls[+v]; if (cl.in < cl.cap) cl.in++; renderMain(); if (cl.in >= cl.cap) toast("The class is full and closed", "No bookings over the limit."); break;
       case "pbr": st.plansBr = v; renderMain(); break;
       case "close":
         var C = st.cash, net = C.rows.reduce(function (a2, r) { return a2 + (r[2] === "in" ? r[1] : -r[1]); }, 0), got = num(C.drawer === "" ? net : C.drawer, 0, 9999999);
@@ -1031,13 +1033,13 @@
         P.cart.push({ id: it2.id, n: it2.n + (it2.sz ? " (" + (it2.sz.length === 3 ? ["صغير", "وسط", "كبير"] : ["وسط", "كبير"])[sel.sz] + ")" : ""), s: it2.s, q: 1, unit: unit, addN: sel.add.map(function (k) { return adds[k][0]; }), up: false });
         P.sheet = null; P.blocked = false; renderPhone("cart"); break;
       case "pq": var l = P.cart[+v]; l.q += +t.getAttribute("data-d"); if (l.q <= 0) P.cart.splice(+v, 1); renderPhone(); break;
-      case "pup": var s = item(v); P.cart.push({ id: s.id, n: s.n, s: s.s, q: 1, unit: s.p, addN: [], up: true }); renderPhone("ctot"); toast("اقتراح «يمشي معاه» اتقبل", "+" + s.p + " " + st.b.cur + " على الفاتورة — من غير ما حد يضغط على الزبون."); break;
+      case "pup": var s = item(v); P.cart.push({ id: s.id, n: s.n, s: s.s, q: 1, unit: s.p, addN: [], up: true }); renderPhone("ctot"); toast("The suggestion worked", "+" + s.p + " " + st.b.curEn + " on the bill — without pushing anyone."); break;
       case "pmode": P.mode = v; P.blocked = false; renderPhone(); break;
       case "ppay": P.pay = v; P.blocked = false; renderPhone(); break;
       case "psend": sendFromPhone(); break;
       case "pview": P.view = v; P.sheet = null; if (v !== "done") P.done = v === "cart" ? null : P.done; if (v === "rate") { P.sentC = false; } renderPhone(); var s2 = $(".ps__sc"); if (s2) s2.scrollTop = 0; break;
       case "pstar": P.stars = +v; P.sentC = false; renderPhone(); break;
-      case "pgoogle": toast("في السيستم الحقيقي بيفتح صفحة التقييم على جوجل ماب", "الراضي بيروح لجوجل — والزعلان بيكتبلك إنت."); st.rev.google++; if (st.mod === "reviews") renderMain(); break;
+      case "pgoogle": toast("In the real system, this opens your Google review page", "Happy customers go to Google. Unhappy ones write to you."); st.rev.google++; if (st.mod === "reviews") renderMain(); break;
       case "pcomplain":
         var msg = (P.msg || "").trim() || "التجربة ما كانتش أحسن حاجة";
         st.rev.list.unshift({ st: P.stars, ph: "05X ••• (إنت)", t: msg, at: Date.now(), done: false, fresh: true });
@@ -1051,7 +1053,7 @@
   root.addEventListener("change", function (e) {
     var t = e.target, k = t.getAttribute("data-chg"); if (!k) return;
     var it = item(t.getAttribute("data-v"));
-    if (k === "price") { var p = num(t.value, 1, 999); if (p == null) { t.value = it.p; return; } if (p !== it.p) { it.p = p; changed("p-" + it.id); done("price"); toast("السعر اتغيّر — " + it.n + " بقى " + p + " " + st.b.cur, "اتغيّر عند كل الزباين في نفس اللحظة."); } }
+    if (k === "price") { var p = num(t.value, 1, 999); if (p == null) { t.value = it.p; return; } if (p !== it.p) { it.p = p; changed("p-" + it.id); done("price"); toast("Price changed to " + p + " " + st.b.curEn, "Every customer sees the new price right away."); } }
     if (k === "badge") { it.b = t.value; changed("i-" + it.id); }
   });
   root.addEventListener("keydown", function (e) {
@@ -1103,14 +1105,14 @@
 
   var peekBtn = d.createElement("button");
   peekBtn.type = "button"; peekBtn.className = "lx__peek";
-  peekBtn.innerHTML = '<span class="dot"></span>' + IC("mobile") + "<span>شاشة الزبون</span>";
+  peekBtn.innerHTML = '<span class="dot"></span>' + IC("mobile") + "<span>Customer view</span>";
   d.body.appendChild(peekBtn);
   peekBtn.addEventListener("click", function () { var p = $("#lphone"); if (p && p.classList.contains("open")) hidePhone(); else showPhone(false); });
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (es) {
       es.forEach(function (en) {
         peekBtn.classList.toggle("show", en.isIntersecting);
-        peekBtn.querySelector("span:last-child").textContent = st && st.gym ? "موبايل العضو" : "شاشة الزبون";
+        peekBtn.querySelector("span:last-child").textContent = st && st.gym ? "Member view" : "Customer view";
         if (!en.isIntersecting) hidePhone();
       });
     }, { rootMargin: "-30% 0px -30% 0px" }).observe(d.getElementById("labx"));

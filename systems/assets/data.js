@@ -167,98 +167,59 @@
     }
   };
 
-  /* ---------------- كل الإمكانيات ---------------- */
-  var GROUPS = [
-    { id: "menu", q: "الزبون بيشوف إيه؟", en: "The menu", ic: "mobile" },
-    { id: "orders", q: "الطلب بيوصلني إزاي؟", en: "Orders", ic: "receipt" },
-    { id: "upsell", q: "الفاتورة تكبر إزاي؟", en: "Bigger tickets", ic: "spark" },
-    { id: "loyal", q: "الزبون يرجع تاني إزاي؟", en: "Coming back", ic: "gift" },
-    { id: "rep", q: "سمعتي على جوجل؟", en: "Reputation", ic: "star" },
-    { id: "control", q: "أغيّر من غير مبرمج؟", en: "Control", ic: "edit" },
-    { id: "guard", q: "أمنع الطلبات الوهمية؟", en: "Protection", ic: "shield" },
-    { id: "money", q: "الفلوس بتتحصّل إزاي؟", en: "Payments", ic: "wallet" },
-    { id: "numbers", q: "الأرقام بتقول إيه؟", en: "Numbers", ic: "chart" },
-    { id: "gym", q: "جيم أو أي نشاط بالاشتراك؟", en: "Memberships", ic: "gym" },
-    { id: "team", q: "الفريق والفروع؟", en: "Team & branches", ic: "building" }
+  /* ---------------- English (لغة الصفحة الأساسية) ---------------- */
+  var EN = {
+    lc: { nameEn: "Luxury Crop", kindEn: "Specialty coffee · Taif", tagEn: "Café", curEn: "SAR",
+      lineEn: "Customers order from the table. The owner sees everything in one dashboard.",
+      factsEn: [["55", "items"], ["4", "photo combos"], ["1", "dashboard"]] },
+    areeb: { nameEn: "Areeb", kindEn: "Specialty coffee", tagEn: "Café", curEn: "SAR",
+      lineEn: "A photo for every item, all in the same light — plus a full ordering system.",
+      factsEn: [["30", "item photos"], ["5", "sections"], ["2", "light & dark"]] },
+    friends: { nameEn: "Friends", kindEn: "Fast food", tagEn: "Restaurant", curEn: "SAR",
+      lineEn: "190 items. Orders reach the kitchen with a bell — and fake orders get stopped.",
+      factsEn: [["190", "items"], ["7", "sections"], ["3", "ways to order"]] },
+    cezar: { nameEn: "Cezar Gym", kindEn: "Gym · 2 branches", tagEn: "Gym", curEn: "EGP",
+      lineEn: "One system runs two branches: members, sessions, cash, coaches and reports.",
+      factsEn: [["16", "modules"], ["2", "branches"], ["9", "alert types"]] }
+  };
+  Object.keys(EN).forEach(function (k) { for (var x in EN[k]) BRANDS[k][x] = EN[k][x]; });
+
+  /* ---------------- الفوايد — النظام ← الفايدة ← التفاصيل ---------------- */
+  /* tr = [المكان، الوحدة] اللي «Try it» بيفتحها في اللوحة */
+  var BEN = [
+    { id: "cafe", t: "Cafés & restaurants", sub: "Luxury Crop · Areeb · Friends", ic: "coffee", items: [
+      { t: "Customers order by themselves", s: "A photo menu on their phone. They choose and order from the table.",
+        d: ["A photo, price and description for every item", "Sizes and add-ons, each with its price", "A QR code on every table — the table number comes with the order", "Opens from the camera. No app to download"], tr: ["lc", "orders"] },
+      { t: "Every order arrives clear", s: "Orders reach your screen with a bell, already priced.",
+        d: ["Dine-in, takeaway or delivery", "New → Preparing → Delivered", "Print a receipt on the cashier printer", "Notes like “no sugar” arrive written"], tr: ["lc", "orders"] },
+      { t: "Bigger bills, without pushing", s: "The menu suggests what goes well with each order.",
+        d: ["“Goes well with” under every item", "Photo combos with the saving shown", "Timed offers that open and close by themselves", "Best-seller and chef’s-pick badges"], tr: ["lc", "offers"] },
+      { t: "Change anything in seconds", s: "Prices, sold-out items and offers. Every customer sees it right away.",
+        d: ["Change a price — no reprinting", "Mark an item sold out with one tap", "Add a new item with its photo", "Swap the offer photo and price"], tr: ["lc", "menu"] },
+      { t: "Customers come back", s: "A stamp card on their phone number.",
+        d: ["The stamp counts only when the cashier delivers the order", "The reward is a one-time code", "A list of all your customers, ready to export"], tr: ["lc", "loyal"] },
+      { t: "A better Google rating", s: "Happy customers go to Google. Unhappy ones talk to you first.",
+        d: ["4–5 stars → your Google review page", "Lower → a private message to you, with their number", "See how many bad reviews you caught"], tr: ["lc", "reviews"] },
+      { t: "No fake orders", s: "Checks run before any order reaches the kitchen.",
+        d: ["A first order from a new number waits for a call", "A time limit between orders, and a daily cap", "Block any number", "Pay by bank transfer with a reference — no fees"], tr: ["friends", "guard"] },
+      { t: "Know your numbers", s: "Sales, busy hours and slow items — and what to do next.",
+        d: ["Compared with the last period", "Busy hours and busy days", "Items nobody orders", "How much the suggestions added"], tr: ["lc", "home"] }
+    ] },
+    { id: "gym", t: "Gyms", sub: "Cezar Gym", ic: "gym", items: [
+      { t: "Fast check-in", s: "Type the member code. The session is counted.",
+        d: ["Plan, sessions left and end date in one card", "Warns if it’s not their men/women hours", "Undo a check-in and the session comes back"], tr: ["cezar", "checkin"] },
+      { t: "Plans by sessions, not days", s: "Entry stops when the sessions run out.",
+        d: ["Freeze a plan — the end date moves by itself", "A different price for each branch", "Renew in one tap"], tr: ["cezar", "members"] },
+      { t: "More renewals", s: "Ready lists and messages, with each member’s name.",
+        d: ["Ending soon, expired, absent, owes money, birthdays", "One message, names filled in for you"], tr: ["cezar", "msgs"] },
+      { t: "Cash you can trust", s: "Every payment and expense, by branch.",
+        d: ["Close the day: drawer vs. system", "See who still owes money", "Every action saved with who did it"], tr: ["cezar", "cash"] },
+      { t: "Two branches, one system", s: "See both together, or one at a time.",
+        d: ["The owner sees everything", "A manager sees their branch only", "Reception sees only their work — PIN login"], tr: ["cezar", "roles"] },
+      { t: "Everything else", s: "What a gym needs, in the same place.",
+        d: ["Classes with limited spots", "Leads with follow-up dates", "Buffet sales and stock", "Machine maintenance and lockers"], tr: ["cezar", "classes"] }
+    ] }
   ];
-
-  /* s = الأنظمة اللي فيها الإمكانية · tr = جرّبها في اللوحة [نوع، وحدة] */
-  var CAPS = [
-    ["menu", "صورة وسعر ووصف لكل صنف", "أريب فيه 30 صورة متصوّرة بنفس الإضاءة، فالمنيو كله شكله واحد.", "الزبون يختار أسرع، ومحدش يسألك «ده شكله إيه؟».", "lc areeb friends", ["cafe", "menu"]],
-    ["menu", "أقسام وبحث فوري", "بحث بيفهم العربي من غير همزات، ويلاقي الصنف وهو بيكتب.", "190 صنف، ويلاقي اللي عايزه في ثانية.", "areeb friends lc"],
-    ["menu", "أحجام وإضافات بسعرها", "وسط وكبير، شوت زيادة، حليب نباتي — كل إضافة بسعرها.", "الإضافة بتتحسب لوحدها، من غير ما الكاشير يفتكر.", "lc areeb friends"],
-    ["menu", "بهوية مكانك بالكامل", "ألوانك وخطك ولوجوك وصورك. مش قالب جاهز متغيّر عليه الاسم.", "الزبون يحس إنه لسه جوه مكانك، حتى وهو على الموبايل.", "lc areeb friends cezar", ["cafe", "brand"]],
-    ["menu", "فاتح وغامق", "الزبون يختار الشكل اللي يريّحه، والسيستم يفتكر اختياره.", "مريح بالليل وفي الإضاءة الواطية.", "areeb friends"],
-    ["menu", "QR لكل طاولة", "كل طاولة ليها كود، ورقم الطاولة بيتسجّل لوحده مع الطلب.", "مفيش «إنت قاعد فين؟» ولا طلب يروح لطاولة غلط.", "friends lc areeb", ["cafe", "qr"]],
-    ["menu", "من غير تطبيق", "بيفتح من كاميرا أي موبايل، وأول فتحة سريعة.", "مفيش زبون هيحمّل تطبيق عشان يطلب قهوة.", "lc areeb friends cezar"],
-
-    ["orders", "محلي · سفري · توصيل", "كل نوع ليه بياناته: رقم الطاولة بس، أو الاسم والرقم، أو العنوان.", "الطلب بيوصلك كامل من أول مرة.", "friends lc areeb", ["cafe", "orders"]],
-    ["orders", "جرس للطلب الجديد", "صوت بيتكرر وعلامة حمرا والعنوان بيرمش لحد ما حد يشوف الطلب.", "مفيش طلب بيتنسي وقت الزحمة.", "friends lc", ["cafe", "orders"]],
-    ["orders", "حالات الطلب", "جديد ← في التحضير ← اتسلّم. والملغي مش بيتحسب في المبيعات.", "تعرف إيه اللي اتأخر من غير ما تسأل حد.", "friends lc areeb", ["cafe", "orders"]],
-    ["orders", "فاتورة حرارية 80mm", "اطبع فاتورة أي طلب من اللوحة على طابعة الكاشير.", "نفس شكل الفاتورة اللي متعوّد عليها.", "friends cezar", ["cafe", "orders"]],
-    ["orders", "ملاحظة على الصنف", "«من غير سكر» أو «زيادة صوص» بتوصل مكتوبة مع الطلب.", "مفيش «أنا قلتلك من غير سكر».", "lc areeb friends"],
-
-    ["upsell", "«يمشي معاه»", "تحت كل صنف اقتراح بيكمّله: قهوة + حلا، سندوتش + بطاطس.", "الفاتورة تكبر من غير ما حد يضغط على الزبون.", "lc areeb friends", ["cafe", "orders"]],
-    ["upsell", "كومبوهات بالصور", "عروض مجمّعة بسعر قبل وبعد والتوفير مكتوب.", "الزبون يشوف إنه كسبان، فيطلب أكتر.", "lc friends areeb", ["cafe", "offers"]],
-    ["upsell", "عرض بعدّاد ومواعيد", "العرض يفتح ويقفل لوحده في الساعات اللي تحددها، وعليه عدّاد.", "تملا الساعات الهادية من غير ما تفتكر تشغّله.", "lc areeb", ["cafe", "offers"]],
-    ["upsell", "بادجات على الأصناف", "الأكثر طلبًا، اختيار الشيف أو الباريستا، جديد.", "توجّه الزبون للأصناف اللي إنت عايز تبيعها.", "lc areeb friends", ["cafe", "menu"]],
-    ["upsell", "الأعلى ربحًا يتقترح الأول", "الأصناف اللي هامشها عالي بتظهر في الاقتراحات قبل غيرها.", "نفس عدد الطلبات… مكسب أكتر.", "lc areeb"],
-    ["upsell", "آخر فرصة في السلة", "قبل ما يبعت، السلة بتقترح حاجة صغيرة تكمّل الطلب.", "إضافة صغيرة على كل طلب بتفرق آخر الشهر.", "friends lc areeb"],
-
-    ["loyal", "كارت ختم برقم الموبايل", "كل طلب بختم، والختم بيتحسب لما الكاشير يسلّم الطلب، مش لما الزبون يضغط.", "الزبون يرجع عشان يكمّل الكارت.", "friends lc areeb", ["cafe", "loyal"]],
-    ["loyal", "المكافأة كود يصرفه الكاشير", "كود زي FR-4821 بيتصرف مرة واحدة من اللوحة.", "محدش ياخد المكافأة مرتين.", "friends", ["cafe", "loyal"]],
-    ["loyal", "حد أدنى وختم في اليوم", "الختم على الطلب اللي فوق مبلغ معيّن، وختم واحد بس في اليوم.", "الكارت بيرجّع زباين، مش بيتاخد بلعب.", "friends", ["cafe", "loyal"]],
-    ["loyal", "قاعدة بيانات الزباين", "كل رقم بزياراته ومجموع طلباته وآخر مرة جه، وتصدير Excel.", "تعرف زباينك الدايمين بالاسم.", "friends lc areeb", ["cafe", "customers"]],
-
-    ["rep", "فلتر التقييم", "4 و5 نجوم يروحوا لجوجل، وأقل من كده يكتبولك إنت.", "تقييمك على جوجل يعلى، والمشكلة توصلك الأول.", "lc areeb friends", ["cafe", "reviews"]],
-    ["rep", "الشكوى في اللوحة", "الشكوى بتوصل بالاسم والرقم، تتصل وتحلّها وتعلّم عليها.", "زبون زعلان اتصالحت معاه = زبون راجع.", "lc areeb friends", ["cafe", "reviews"]],
-    ["rep", "عدّاد الشكاوى اللي اتلمّت", "تعرف كام تقييم وحش كان رايح لجوجل واتلحق.", "رقم واضح بيقولك السيستم وفّر عليك إيه.", "friends lc"],
-
-    ["control", "غيّر أي سعر", "من اللوحة، والسعر يتغيّر عند كل الزباين في نفس اللحظة.", "مفيش منيو مطبوع يترمي.", "lc areeb friends", ["cafe", "menu"]],
-    ["control", "صنف خلص؟ ضغطة", "الصنف يقف طلبه ويتكتب عليه «خلص النهارده».", "محدش يطلب حاجة مش موجودة.", "lc areeb friends", ["cafe", "menu"]],
-    ["control", "صنف جديد بصورته", "اسم وسعر وصورة وقسم، ويظهر في المنيو على طول.", "تنزّل صنف جديد في دقيقة.", "friends lc areeb", ["cafe", "menu"]],
-    ["control", "العروض من اللوحة", "تغيّر صورة العرض وسعره ومواعيده من مكان واحد.", "العرض يتغيّر عند كل الزباين فورًا.", "lc areeb", ["cafe", "offers"]],
-    ["control", "المواعيد والعنوان والأرقام", "بيانات المكان كلها في مكان واحد، وتتعدّل في ثانية.", "معلومة صح دايمًا قدام الزبون.", "lc areeb friends cezar", ["cafe", "brand"]],
-
-    ["guard", "تأكيد أول طلب", "أول طلب من رقم جديد أو مبلغ كبير بيستنى مكالمة تأكيد قبل المطبخ.", "مفيش أكل يتعمل لطلب وهمي.", "friends", ["cafe", "guard"]],
-    ["guard", "فترة بين الطلبات وحد يومي", "محدش يقدر يبعت طلبات ورا بعض أو يعدّي العدد اللي تحدده.", "محدش يغرّقك بطلبات وإنت في عز الشغل.", "friends", ["cafe", "guard"]],
-    ["guard", "قايمة حظر", "رقم بيلعب؟ يتقفل ومايقدرش يطلب تاني.", "تحكم مين يطلب من مكانك.", "friends", ["cafe", "guard"]],
-    ["guard", "فخ للبرامج الآلية", "خانة مستخبية ومدة قعاد في الصفحة بتكشف أي برنامج بيبعت طلبات.", "الطلبات اللي بتوصلك من ناس حقيقية.", "friends"],
-    ["guard", "رقم الطاولة مقفول بالـQR", "كود الطاولة بيمنع حد يكتب رقم طاولة مش بتاعته.", "الطلب يروح للطاولة الصح.", "friends"],
-
-    ["money", "دفع بتحويل برقم مرجعي", "STC Pay أو تحويل بنكي: الزبون يكتب آخر 6 أرقام، والكاشير يأكد.", "تقبل دفع أونلاين من غير بوابة ولا عمولة.", "friends", ["cafe", "pay"]],
-    ["money", "«الفلوس وصلت ✓»", "الطلب المدفوع بيعدّي التأكيد على طول — الفلوس هي التأكيد.", "تأكيد من محفظتك إنت، مش من سكرين شوت.", "friends", ["cafe", "pay"]],
-    ["money", "المبيعات الحقيقية بس", "الطلب الملغي واللي مستني دفع مش بيتحسبوا في الأرقام.", "الرقم اللي قدامك = الفلوس اللي دخلت.", "friends cezar"],
-    ["money", "حاسبة العائد", "تحسب السيستم بيرجّع تمنه في كام يوم من أرقام مكانك.", "قرار مبني على حساب، مش على إحساس.", "friends"],
-
-    ["numbers", "مبيعات وزوار وطلبات", "كل رقم مقارن بالفترة اللي قبلها.", "تعرف إنت طالع ولا نازل في نظرة.", "lc areeb friends cezar", ["cafe", "home"]],
-    ["numbers", "ساعات وأيام الذروة", "إمتى الزحمة وإمتى الهدوء، بالساعة واليوم.", "تعرف تزوّد الشيفت إمتى وتشغّل العرض إمتى.", "lc areeb friends cezar", ["cafe", "reports"]],
-    ["numbers", "الأصناف الواقفة", "الأصناف اللي محدش فتحها أو طلبها من فترة.", "مساحة ومخزون ضايعين تقدر تشيلهم.", "lc areeb friends", ["cafe", "reports"]],
-    ["numbers", "بيتشاف كتير ومبيتطلبش", "مقارنة الأكتر مشاهدة بالأكتر مبيعًا.", "صنف بيتشاف ومبيتطلبش = مشكلة في السعر أو الصورة.", "lc areeb friends"],
-    ["numbers", "«محتاج قرار منك»", "اللوحة بتقولك تعمل إيه: صنف واقف، تقييمات واطية، طلب مستني.", "أرقام بتتحول لقرارات، مش جدول تتوه فيه.", "lc areeb cezar", ["cafe", "home"]],
-    ["numbers", "اللي جه من الاقتراحات", "كام ريال زاد على الفاتورة بسبب «يمشي معاه» والإضافات.", "تشوف بعينك السيستم بيكسّبك كام.", "lc areeb", ["cafe", "home"]],
-
-    ["gym", "اشتراك بالجلسات", "كل دخول بيخصم جلسة، والسيستم يمنع الدخول لما الجلسات تخلص حتى لو التاريخ لسه ساري.", "مفيش جلسة بتدخل من غير حساب.", "cezar", ["gym", "checkin"]],
-    ["gym", "فترات رجالة وسيدات", "جدول لكل فرع، وتنبيه لو حد داخل في فترة مش بتاعته.", "الريسبشن مش محتاج يحفظ المواعيد.", "cezar", ["gym", "checkin"]],
-    ["gym", "دخول بالكود", "الريسبشن يكتب كود العضو ويشوف اشتراكه وجلساته ومتأخراته.", "دخول في ثانيتين، من غير دفاتر.", "cezar", ["gym", "checkin"]],
-    ["gym", "تجميد الاشتراك", "التجميد بيزوّد تاريخ الانتهاء لوحده، وفكّه بيرجّعه.", "العضو مش بيخسر أيامه وإنت مش بتحسب بإيدك.", "cezar", ["gym", "members"]],
-    ["gym", "عملاء محتملين", "من «جديد» لـ«اشترك» بميعاد متابعة إجباري، وأسباب اللي ضاعوا.", "محدش سأل عن السعر واتنسى.", "cezar"],
-    ["gym", "رسايل جاهزة بقوايمها", "اللي اشتراكه بيخلص، اللي خلص، الغايب، المتأخر، عيد الميلاد — والرسالة جاهزة باسمه.", "تجديد أكتر وغياب أقل.", "cezar", ["gym", "msgs"]],
-    ["gym", "حصص بسعة", "جدول أسبوعي وحجز بعدد أماكن، والحصة تقفل لما تتملي.", "مفيش حصة زحمة وحصة فاضية.", "cezar", ["gym", "classes"]],
-    ["gym", "بوفيه ومخزون", "نقطة بيع للمكملات والمشروبات، وتنبيه لما الصنف يقرب يخلص.", "مكسب البوفيه بيتحسب لوحده.", "cezar"],
-    ["gym", "صيانة الأجهزة", "جرد ومواعيد صيانة دورية وتكلفة كل إصلاح.", "الجهاز مايقفش في وش الأعضاء.", "cezar"],
-    ["gym", "لوكرات", "خريطة اللوكرات لكل فرع ومين واخد إيه.", "مفيش لوكر ضايع ولا متاخد مرتين.", "cezar"],
-    ["gym", "9 أنواع تنبيهات", "اشتراكات بتخلص، متأخرات، غياب، مخزون، صيانة، ليدز، مهام، أعياد ميلاد — وكل تنبيه بزرار.", "النظام بيقولك تعمل إيه النهارده.", "cezar", ["gym", "home"]],
-
-    ["team", "فرعين من سيستم واحد", "كل حاجة متسجّلة بفرعها، ومبدّل فوق بيفلتر النظام كله.", "تشوف الفرعين مع بعض أو كل واحد لوحده.", "cezar", ["gym", "home"]],
-    ["team", "صلاحيات بالـPIN", "صاحب المكان يشوف كله، والمدير فرعه بس، والريسبشن شغله بس.", "كل واحد يشوف اللي يخصّه.", "cezar", ["gym", "roles"]],
-    ["team", "خزنة وتقفيل اليوم", "كل وارد ومنصرف بفرعه، وتقفيل اليوم بيقارن الدرج بالمسجّل.", "تعرف الفرق في نفس اليوم مش آخر الشهر.", "cezar", ["gym", "cash"]],
-    ["team", "كباتن وعمولات", "ملفات وورديات ومرتبات وعمولات، وصرف المرتبات بضغطة.", "حساب كل كابتن واضح.", "cezar"],
-    ["team", "نسخة احتياطية", "نسخة من كل البيانات ترجّعها زي ما هي.", "بياناتك مش هتضيع.", "cezar"],
-    ["team", "سجل نشاط", "كل حركة متسجّلة باسم اللي عملها ووقتها.", "تعرف مين عمل إيه.", "cezar"]
-  ].map(function (r) {
-    return { g: r[0], t: r[1], d: r[2], f: r[3], s: r[4].split(" "), tr: r[5] || null };
-  });
 
   window.SYS = {
     LOCAL: LOCAL,
@@ -266,8 +227,7 @@
     igHandle: "ahmedshiref__",
     brands: BRANDS,
     order: ["lc", "areeb", "friends", "cezar"],
-    groups: GROUPS,
-    caps: CAPS,
+    ben: BEN,
     img: img
   };
 })();
