@@ -7,7 +7,7 @@
 
 /* اختيار المكان */
 .lx__brands{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-.lx__brands button{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:var(--card);text-align:left;transition:border-color .2s,box-shadow .25s,transform .25s var(--ease)}
+.lx__brands button{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:var(--card);text-align:start;transition:border-color .2s,box-shadow .25s,transform .25s var(--ease)}
 .lx__brands button:hover{border-color:var(--line2)}
 .lx__brands button.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
 .lx__bm{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;flex:none;font-family:var(--ui);font-weight:700;font-size:13px;overflow:hidden}
@@ -446,7 +446,7 @@
 .lx__toast.show{opacity:1;transform:translate(-50%,0)}
 .lx__toast .ic{color:#4ADE80;flex:none}
 .lx__toast small{display:block;color:#BDB8B0;font-size:12.5px}
-.lx__toast{text-align:left}
+.lx__toast{text-align:start}
 @media (max-width:1080px){.lx__toast{bottom:auto;top:74px;transform:translate(-50%,-20px)}.lx__toast.show{transform:translate(-50%,0)}}
 
 /* فاتورة */

@@ -13,7 +13,7 @@
   function setTheme(t, save) {
     root.setAttribute("data-theme", t);
     if (meta) meta.setAttribute("content", t === "dark" ? "#111111" : "#F7F5F2");
-    themeBtn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    themeBtn.setAttribute("aria-label", t === "dark" ? "الوضع الفاتح" : "الوضع الغامق");
     if (save) try { localStorage.setItem("athr-sys-theme", t); } catch (e) { }
   }
   setTheme(root.getAttribute("data-theme") || "dark");
@@ -40,21 +40,21 @@
   /* ---------- 01 · الأنظمة ---------- */
   var SURF = { lc: "#E9E1D6", areeb: "#E6DAC1", friends: "#1C1916", cezar: "#1E1F23" };
   $("#cases").innerHTML = S.order.map(function (id, i) {
-    var b = S.brands[id], gym = b.type === "gym";
+    var b = S.brands[id], gym = b.type === "gym", k = [b.kind, b.city].filter(Boolean).join(" · ");
     return '<article class="case" data-brand="' + id + '" style="--sf:' + SURF[id] + '">' +
       '<div class="case__media rv">' +
-        '<div class="case__lap"><div class="scr"><img loading="lazy" decoding="async" src="' + b.shots.desk + '" alt="' + esc(b.nameEn) + ' owner dashboard" width="1440" height="900"></div><div class="base"></div></div>' +
-        '<div class="case__ph"><div class="scr"><img loading="lazy" decoding="async" class="' + (b.shots.scroll ? "scrolls" : "") + '" src="' + b.shots.phone + '" alt="' + esc(b.nameEn) + ' on a customer phone"></div></div>' +
+        '<div class="case__lap"><div class="scr"><img loading="lazy" decoding="async" src="' + b.shots.desk + '" alt="لوحة صاحب المكان — ' + esc(b.name) + '" width="1440" height="900"></div><div class="base"></div></div>' +
+        '<div class="case__ph"><div class="scr"><img loading="lazy" decoding="async" class="' + (b.shots.scroll ? "scrolls" : "") + '" src="' + b.shots.phone + '" alt="شاشة الزبون — ' + esc(b.name) + '"></div></div>' +
       "</div>" +
       '<div class="case__txt">' +
-        '<p class="case__k rv"><b>0' + (i + 1) + "</b>" + esc(b.kindEn) + "</p>" +
-        '<h3 class="case__name rv">' + esc(b.nameEn) + '<span class="ar">' + esc(b.name) + "</span></h3>" +
-        '<p class="case__line rv">' + esc(b.lineEn) + "</p>" +
-        '<ul class="facts rv">' + b.factsEn.map(function (f) { return "<li><b>" + f[0] + "</b><span>" + esc(f[1]) + "</span></li>"; }).join("") + "</ul>" +
+        '<p class="case__k rv"><b>0' + (i + 1) + "</b>" + esc(k) + "</p>" +
+        '<h3 class="case__name rv"><span dir="ltr">' + esc(b.nameEn) + '</span><span class="ar">' + esc(b.name) + "</span></h3>" +
+        '<p class="case__line rv">' + esc(b.line) + "</p>" +
+        '<ul class="facts rv">' + b.facts.map(function (f) { return "<li><b>" + f[0] + "</b><span>" + esc(f[1]) + "</span></li>"; }).join("") + "</ul>" +
         '<div class="case__cta rv">' +
-          '<a class="btn btn--sm" href="' + b.urls.menu + '" target="_blank" rel="noopener">' + (gym ? "Gym website" : "Customer view") + IC("out") + "</a>" +
-          '<a class="btn btn--sm btn--ghost" href="' + b.urls.owner + '" target="_blank" rel="noopener">' + (gym ? "Management system" : "Owner dashboard") + IC("out") + "</a>" +
-          '<button class="tlink" type="button" data-try="' + id + '">Try it here' + IC("down") + "</button>" +
+          '<a class="btn btn--sm" href="' + b.urls.menu + '" target="_blank" rel="noopener">' + (gym ? "موقع الجيم" : "شاشة الزبون") + IC("out") + "</a>" +
+          '<a class="btn btn--sm btn--ghost" href="' + b.urls.owner + '" target="_blank" rel="noopener">' + (gym ? "نظام الإدارة" : "لوحة صاحب المكان") + IC("out") + "</a>" +
+          '<button class="tlink" type="button" data-try="' + id + '">جرّبه هنا' + IC("down") + "</button>" +
         "</div>" +
       "</div>" +
     "</article>";
@@ -81,20 +81,20 @@
 
   /* ---------- 02 · الفوايد: النظام ← الفايدة ← التفاصيل ---------- */
   var ben = $("#ben"), sys = S.ben[0].id, open = null;
-  var NAMES = { lc: "Luxury Crop", areeb: "Areeb", friends: "Friends", cezar: "Cezar Gym" };
+  var NAMES = { lc: "محصول فاخر", areeb: "أريب", friends: "فرندس", cezar: "سيزر جيم" };
   function renderBen() {
     var cur = S.ben.filter(function (x) { return x.id === sys; })[0];
     ben.innerHTML =
-      '<div class="ben__pick" role="tablist" aria-label="Pick a system">' + S.ben.map(function (x) {
+      '<div class="ben__pick" role="tablist" aria-label="اختار نوع مكانك">' + S.ben.map(function (x) {
         return '<button type="button" role="tab" class="bpk' + (x.id === sys ? " on" : "") + '" aria-selected="' + (x.id === sys) + '" data-sys="' + x.id + '">' +
-          '<span class="bpk__i">' + IC(x.ic) + '</span><span class="bpk__t"><b>' + esc(x.t) + "</b><small>" + esc(x.sub) + '</small></span><span class="bpk__n">' + x.items.length + " benefits</span></button>";
+          '<span class="bpk__i">' + IC(x.ic) + '</span><span class="bpk__t"><b>' + esc(x.t) + "</b><i>" + esc(x.ar) + "</i><small>" + esc(x.sub) + '</small></span><span class="bpk__n">' + x.items.length + " فوايد</span></button>";
       }).join("") + "</div>" +
       '<div class="ben__list" role="tabpanel">' + cur.items.map(function (it, i) {
-        var o = open === i, inBrands = cur.id === "gym" ? "Cezar Gym" : "Luxury Crop · Areeb · Friends";
+        var o = open === i;
         return '<div class="acc' + (o ? " open" : "") + '"><button type="button" class="acc__h" aria-expanded="' + o + '" data-acc="' + i + '">' +
           '<span class="acc__n">' + (i + 1) + '</span><span class="acc__t"><b>' + esc(it.t) + "</b><small>" + esc(it.s) + '</small></span><span class="acc__x">' + IC("plus") + "</span></button>" +
           '<div class="acc__p"><div><div class="acc__in"><ul>' + it.d.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
-          '<div class="acc__ft"><button type="button" class="btn btn--sm" data-try="' + it.tr[0] + '" data-mod="' + it.tr[1] + '">Try it in ' + NAMES[it.tr[0]] + IC("down") + "</button><small>In: " + inBrands + "</small></div></div></div></div></div>";
+          '<div class="acc__ft"><button type="button" class="btn btn--sm" data-try="' + it.tr[0] + '" data-mod="' + it.tr[1] + '">جرّبها في ' + NAMES[it.tr[0]] + IC("down") + "</button><small>موجودة في: " + esc(cur.sub) + "</small></div></div></div></div></div>";
       }).join("") + "</div>";
   }
   renderBen();

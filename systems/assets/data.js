@@ -185,39 +185,39 @@
   Object.keys(EN).forEach(function (k) { for (var x in EN[k]) BRANDS[k][x] = EN[k][x]; });
 
   /* ---------------- الفوايد — النظام ← الفايدة ← التفاصيل ---------------- */
-  /* tr = [المكان، الوحدة] اللي «Try it» بيفتحها في اللوحة */
+  /* t = عنوان النظام (إنجليزي) · ar = اسمه بالعربي · tr = [المكان، الوحدة] اللي «جرّبها» بيفتحها */
   var BEN = [
-    { id: "cafe", t: "Cafés & restaurants", sub: "Luxury Crop · Areeb · Friends", ic: "coffee", items: [
-      { t: "Customers order by themselves", s: "A photo menu on their phone. They choose and order from the table.",
-        d: ["A photo, price and description for every item", "Sizes and add-ons, each with its price", "A QR code on every table — the table number comes with the order", "Opens from the camera. No app to download"], tr: ["lc", "orders"] },
-      { t: "Every order arrives clear", s: "Orders reach your screen with a bell, already priced.",
-        d: ["Dine-in, takeaway or delivery", "New → Preparing → Delivered", "Print a receipt on the cashier printer", "Notes like “no sugar” arrive written"], tr: ["lc", "orders"] },
-      { t: "Bigger bills, without pushing", s: "The menu suggests what goes well with each order.",
-        d: ["“Goes well with” under every item", "Photo combos with the saving shown", "Timed offers that open and close by themselves", "Best-seller and chef’s-pick badges"], tr: ["lc", "offers"] },
-      { t: "Change anything in seconds", s: "Prices, sold-out items and offers. Every customer sees it right away.",
-        d: ["Change a price — no reprinting", "Mark an item sold out with one tap", "Add a new item with its photo", "Swap the offer photo and price"], tr: ["lc", "menu"] },
-      { t: "Customers come back", s: "A stamp card on their phone number.",
-        d: ["The stamp counts only when the cashier delivers the order", "The reward is a one-time code", "A list of all your customers, ready to export"], tr: ["lc", "loyal"] },
-      { t: "A better Google rating", s: "Happy customers go to Google. Unhappy ones talk to you first.",
-        d: ["4–5 stars → your Google review page", "Lower → a private message to you, with their number", "See how many bad reviews you caught"], tr: ["lc", "reviews"] },
-      { t: "No fake orders", s: "Checks run before any order reaches the kitchen.",
-        d: ["A first order from a new number waits for a call", "A time limit between orders, and a daily cap", "Block any number", "Pay by bank transfer with a reference — no fees"], tr: ["friends", "guard"] },
-      { t: "Know your numbers", s: "Sales, busy hours and slow items — and what to do next.",
-        d: ["Compared with the last period", "Busy hours and busy days", "Items nobody orders", "How much the suggestions added"], tr: ["lc", "home"] }
+    { id: "cafe", t: "Cafés & Restaurants", ar: "كافيهات ومطاعم", sub: "محصول فاخر · أريب · فرندس", ic: "coffee", items: [
+      { t: "الزبون بيطلب لوحده", s: "منيو بالصور على موبايله، يختار ويطلب من الطاولة.",
+        d: ["صورة وسعر ووصف لكل صنف", "أحجام وإضافات، كل واحدة بسعرها", "كود QR على كل طاولة — ورقم الطاولة بيوصل مع الطلب", "بيفتح من الكاميرا، من غير تطبيق"], tr: ["lc", "orders"] },
+      { t: "الطلب يوصلك واضح", s: "الطلب بيوصل شاشتك بجرس، ومتحسب.",
+        d: ["محلي أو سفري أو توصيل", "جديد ← في التحضير ← اتسلّم", "تطبع الفاتورة على طابعة الكاشير", "ملاحظات زي «من غير سكر» بتوصل مكتوبة"], tr: ["lc", "orders"] },
+      { t: "فاتورة أكبر من غير إلحاح", s: "المنيو بيقترح اللي يمشي مع كل طلب.",
+        d: ["«يمشي معاه» تحت كل صنف", "كومبوهات بالصور والتوفير مكتوب", "عروض بتفتح وتقفل لوحدها في مواعيدها", "علامة «الأكثر طلبًا» و«اختيار الشيف»"], tr: ["lc", "offers"] },
+      { t: "تغيّر أي حاجة في ثانية", s: "السعر، والصنف اللي خلص، والعروض — والزبون يشوفها على طول.",
+        d: ["تغيّر السعر من غير ما تطبع منيو", "تقفل صنف خلص بضغطة", "تضيف صنف جديد بصورته", "تغيّر صورة العرض وسعره"], tr: ["lc", "menu"] },
+      { t: "الزبون يرجع تاني", s: "كارت ختم على رقم موبايله.",
+        d: ["الختم بيتحسب لما الكاشير يسلّم الطلب", "المكافأة كود بيتصرف مرة واحدة", "قايمة بكل زباينك، وتنزّلها Excel"], tr: ["lc", "loyal"] },
+      { t: "تقييم أعلى على جوجل", s: "الراضي يروح لجوجل، والزعلان يكلّمك إنت الأول.",
+        d: ["4 و5 نجوم ← صفحة تقييمك على جوجل", "أقل من كده ← رسالة ليك برقمه", "تعرف كام تقييم وحش اتلحق"], tr: ["lc", "reviews"] },
+      { t: "مفيش طلبات وهمية", s: "حماية قبل ما أي طلب يدخل المطبخ.",
+        d: ["أول طلب من رقم جديد يستنى مكالمة", "وقت بين الطلبات وحد في اليوم", "تحظر أي رقم", "دفع بتحويل برقم مرجعي — من غير عمولة"], tr: ["friends", "guard"] },
+      { t: "تعرف أرقامك", s: "المبيعات وساعات الزحمة والأصناف الواقفة — وتعمل إيه بعدها.",
+        d: ["مقارنة بالفترة اللي فاتت", "ساعات وأيام الزحمة", "الأصناف اللي محدش بيطلبها", "الاقتراحات زوّدت كام"], tr: ["lc", "home"] }
     ] },
-    { id: "gym", t: "Gyms", sub: "Cezar Gym", ic: "gym", items: [
-      { t: "Fast check-in", s: "Type the member code. The session is counted.",
-        d: ["Plan, sessions left and end date in one card", "Warns if it’s not their men/women hours", "Undo a check-in and the session comes back"], tr: ["cezar", "checkin"] },
-      { t: "Plans by sessions, not days", s: "Entry stops when the sessions run out.",
-        d: ["Freeze a plan — the end date moves by itself", "A different price for each branch", "Renew in one tap"], tr: ["cezar", "members"] },
-      { t: "More renewals", s: "Ready lists and messages, with each member’s name.",
-        d: ["Ending soon, expired, absent, owes money, birthdays", "One message, names filled in for you"], tr: ["cezar", "msgs"] },
-      { t: "Cash you can trust", s: "Every payment and expense, by branch.",
-        d: ["Close the day: drawer vs. system", "See who still owes money", "Every action saved with who did it"], tr: ["cezar", "cash"] },
-      { t: "Two branches, one system", s: "See both together, or one at a time.",
-        d: ["The owner sees everything", "A manager sees their branch only", "Reception sees only their work — PIN login"], tr: ["cezar", "roles"] },
-      { t: "Everything else", s: "What a gym needs, in the same place.",
-        d: ["Classes with limited spots", "Leads with follow-up dates", "Buffet sales and stock", "Machine maintenance and lockers"], tr: ["cezar", "classes"] }
+    { id: "gym", t: "Gyms", ar: "جيم", sub: "سيزر جيم", ic: "gym", items: [
+      { t: "دخول في ثانيتين", s: "الريسبشن يكتب كود العضو، والجلسة تتخصم.",
+        d: ["الباقة والجلسات الباقية وتاريخ الانتهاء في كارت واحد", "ينبّه لو مش فترته (رجالة / سيدات)", "تلغي الدخول والجلسة ترجع"], tr: ["cezar", "checkin"] },
+      { t: "الباقة بالجلسات مش بالأيام", s: "الدخول بيقف لما الجلسات تخلص.",
+        d: ["تجمّد الاشتراك وتاريخ الانتهاء يتمد لوحده", "سعر مختلف لكل فرع", "تجديد بضغطة"], tr: ["cezar", "members"] },
+      { t: "تجديد أكتر", s: "قوايم جاهزة ورسالة باسم كل عضو.",
+        d: ["اللي بيخلص، اللي خلص، الغايب، اللي عليه فلوس، عيد الميلاد", "رسالة واحدة والأسماء بتتكتب لوحدها"], tr: ["cezar", "msgs"] },
+      { t: "فلوسك واضحة", s: "كل وارد ومنصرف بفرعه.",
+        d: ["تقفيل اليوم: الدرج قصاد السيستم", "تعرف مين عليه فلوس", "كل حركة متسجّلة باسم اللي عملها"], tr: ["cezar", "cash"] },
+      { t: "فرعين في سيستم واحد", s: "تشوف الاتنين مع بعض، أو كل واحد لوحده.",
+        d: ["صاحب الجيم بيشوف كل حاجة", "المدير بيشوف فرعه بس", "الريسبشن بيشوف شغله بس — دخول بكود"], tr: ["cezar", "roles"] },
+      { t: "وكل حاجة تانية", s: "كل اللي الجيم محتاجه في مكان واحد.",
+        d: ["حصص بعدد أماكن", "عملاء محتملين بميعاد متابعة", "بوفيه ومخزون", "صيانة الأجهزة واللوكرات"], tr: ["cezar", "classes"] }
     ] }
   ];
 

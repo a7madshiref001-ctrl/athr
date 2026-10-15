@@ -13,19 +13,19 @@
      المشاهد: البداية والنهاية والنص اللي بيظهر (الكمبيوتر + تحت الفيديو في الموبايل)
      ------------------------------------------------------------------ */
   var CH = [
-    { t: 0, n: "Intro" },
-    { t: 4.8, n: "Menu", k: "01", brand: "lc", h: "Customers see everything.", b: "A photo, price and details for every item. No more “how much is this?”" },
-    { t: 11.2, n: "Orders", k: "02", brand: "lc", h: "Orders arrive clear and priced.", b: "From the table to your screen, with a bell. A smart tip added +10 SAR." },
-    { t: 19.2, n: "Offers", k: "03", brand: "lc", h: "Change an offer in seconds.", b: "Pick a photo and a price. Every customer sees it right away." },
-    { t: 27.2, n: "Control", k: "04", brand: "friends", h: "Sold out? One tap.", b: "It stops being ordered. Prices change with no reprinting." },
-    { t: 33.7, n: "Loyalty", k: "05", brand: "areeb", h: "They come back. Complaints come to you.", b: "A stamp card brings them back. Unhappy customers talk to you before Google." },
-    { t: 42.2, n: "Numbers", k: "06", brand: "areeb", h: "See what sells.", b: "Sales, busy hours and slow items — and what to do next." },
-    { t: 48.7, n: "Gym", k: "07", brand: "cezar", h: "A gym? Same idea.", b: "Members check in with a code. Sessions count down. You know who to remind." },
-    { t: 56.2, n: "End" }
+    { t: 0, n: "البداية" },
+    { t: 4.8, n: "المنيو", k: "01", brand: "lc", h: "الزبون يشوف كل حاجة لوحده.", b: "صورة وسعر ووصف لكل صنف — من غير ما حد يسألك «بكام ده؟»." },
+    { t: 11.2, n: "الطلب", k: "02", brand: "lc", h: "الطلب يوصلك مكتوب ومتحسب.", b: "من الطاولة للوحة بصوت جرس. والسيستم اقترح «يمشي معاه» فالفاتورة زادت 10 ر.س." },
+    { t: 19.2, n: "العروض", k: "03", brand: "lc", h: "غيّر العرض… في ثانية.", b: "تختار الصورة والسعر والمواعيد من اللوحة، والمنيو يتغيّر عند كل الزباين في نفس اللحظة." },
+    { t: 27.2, n: "التحكم", k: "04", brand: "friends", h: "خلص صنف؟ ضغطة واحدة.", b: "يقف طلبه فورًا، والسعر يتعدّل من غير ما تطبع منيو جديد." },
+    { t: 33.7, n: "الولاء والتقييم", k: "05", brand: "areeb", h: "الزبون يرجع… والشكوى توصلك إنت.", b: "كارت ختم بيرجّع الزبون. واللي مش مبسوط يكتبلك إنت الأول، قبل ما يكتب على جوجل." },
+    { t: 42.2, n: "الأرقام", k: "06", brand: "areeb", h: "تعرف إيه اللي بيكسب.", b: "مبيعات وساعات زحمة وأصناف واقفة — واللوحة نفسها بتقولك تعمل إيه." },
+    { t: 48.7, n: "الجيم", k: "07", brand: "cezar", h: "جيم؟ نفس الفكرة.", b: "العضو يدخل بكوده، الجلسة تتخصم، والسيستم يقولك مين اشتراكه بيخلص — ويبعتله." },
+    { t: 56.2, n: "الختام" }
   ];
   var DUR = 62;
-  var HOOK_CAP = { h: "Too many messages. Too much time.", b: "Your menu can answer most of them for you." };
-  var OUT_CAP = { h: "Now try it yourself.", b: "Everything in this video works in the dashboard below." };
+  var HOOK_CAP = { h: "رسايل كتير… ووقت ضايع.", b: "كل سؤال من دول المنيو ممكن يجاوب عليه لوحده — وإنت فاضي لشغلك." };
+  var OUT_CAP = { h: "جرّب اللوحة بنفسك تحت.", b: "كل حاجة شفتها في الفيديو تقدر تعملها بإيدك — والأرقام تجريبية." };
 
   /* ------------------------------------------------------------------
      أدوات بناء الشاشات
@@ -43,7 +43,7 @@
     return '<div class="sc__txt"><p class="sc__k"><b>' + c.k + '</b><i></i><span>' + c.n + "</span></p>" +
       '<h3 class="sc__h">' + words(c.h) + "</h3>" +
       '<p class="sc__b">' + words(c.b) + "</p>" +
-      '<p class="sc__brand" style="--bc:' + (b.t.dark ? b.t.pri : (b.id === "cezar" ? "#BEF23C" : b.t.pri)) + '"><i></i>From the <b>' + esc(b.nameEn) + "</b> system</p></div>";
+      '<p class="sc__brand" style="--bc:' + (b.t.dark ? b.t.pri : (b.id === "cezar" ? "#BEF23C" : b.t.pri)) + '"><i></i>من سيستم <b>' + esc(b.name) + "</b></p></div>";
   }
   function cur() { return '<div class="cur"><div class="cur__r"></div><div class="cur__d"></div></div>'; }
   function money(v, b) { return Math.round(v).toLocaleString("en-US") + " " + (b || "ر.س"); }
@@ -98,14 +98,14 @@
   var H = [];
   /* 0 · البداية */
   H.push('<div class="sc" data-s="0"><div class="sc__bg"></div><div class="sc__grid"></div>' +
-    '<div class="devs nocmp"><div class="ph" style="left:470px;top:100px"><div class="ph__s" style="background:#EFEAE2;--pb:#fff">' + bar() +
+    '<div class="devs nocmp"><div class="ph" style="left:120px;top:100px"><div class="ph__s" style="background:#EFEAE2;--pb:#fff">' + bar() +
       '<div class="chat"><div class="chat__hd"><span class="av">◆</span><div><b>رسايل الصفحة</b><small>نشط الآن</small></div><em class="h-cnt">1</em></div>' +
       '<div class="chat__list">' + MSGS.map(function (m) { return '<div class="bub"><b>' + m[0] + "</b>" + m[1] + "<small>9:41</small></div>"; }).join("") + "</div></div>" +
     "</div></div></div>" +
-    '<h3 class="hook__h keep-t">' + words("Same questions.") + '<br><span style="color:#F24A3D">' + words("Every day.") + "</span></h3>" +
-    '<h3 class="hook__h2 keep-t">' + words("Let the system") + "<br>" + words("answer.") + '<em>◆</em></h3>' +
-    '<p class="hook__s">Menu · Orders · Offers · Numbers — in one system.</p>' +
-    '<div class="big-dm" style="left:1039px;top:360px"></div></div>');
+    '<h3 class="hook__h keep-t">' + words("نفس الأسئلة…") + '<br><span style="color:#F24A3D">' + words("كل يوم.") + "</span></h3>" +
+    '<h3 class="hook__h2 keep-t">' + words("خلّي السيستم") + "<br>" + words("يرد عنك") + '<em>◆</em></h3>' +
+    '<p class="hook__s">منيو · طلبات · عروض · أرقام — في سيستم واحد.</p>' +
+    '<div class="big-dm" style="left:281px;top:360px"></div></div>');
 
   /* 1 · المنيو (محصول فاخر) */
   H.push('<div class="sc" data-s="1"><div class="sc__bg"></div><div class="sc__grid"></div>' + txt(CH[1]) +
@@ -262,10 +262,10 @@
       "</div></div>" + cur() + "</div></div>");
 
   /* 8 · الختام */
-  var OUT = [["lc", "Luxury Crop", "Café · Taif"], ["areeb", "Areeb", "Specialty coffee"], ["friends", "Friends", "Restaurant"], ["cezar", "Cezar Gym", "Gym · 2 branches"]];
+  var OUT = [["lc", "محصول فاخر", "كافيه · الطائف"], ["areeb", "أريب", "كافيه مختص"], ["friends", "فرندس", "مطعم"], ["cezar", "سيزر جيم", "جيم · فرعين"]];
   H.push('<div class="sc" data-s="8"><div class="sc__bg"></div><div class="sc__grid"></div>' +
-    '<h3 class="out__h">' + words("4 real systems. Built and running.") + "</h3>" +
-    '<p class="out__s">Try them yourself below.</p>' +
+    '<h3 class="out__h">' + words("4 أنظمة حقيقية. اتبنت فعلًا") + '<span class="wm"><span class="w" style="color:#F24A3D">◆</span></span></h3>' +
+    '<p class="out__s">جرّبها بإيدك تحت — اللوحة مفتوحة ليك.</p>' +
     '<div class="out__row">' + OUT.map(function (o) {
       return '<div class="mini"><div class="mini__ph"><div><img src="' + B[o[0]].shots.phone + '" alt=""></div></div><b>' + o[1] + "</b><small>" + o[2] + "</small></div>";
     }).join("") + "</div>" +
@@ -662,14 +662,14 @@
   function fmt(t) { t = Math.max(0, Math.round(t)); return Math.floor(t / 60) + ":" + (t % 60 < 10 ? "0" : "") + (t % 60); }
   function setPlayIcon(p) {
     playBtn.innerHTML = IC(p ? "pause" : "play");
-    playBtn.setAttribute("aria-label", p ? "Pause" : "Play");
+    playBtn.setAttribute("aria-label", p ? "وقّف" : "شغّل");
     player.classList.toggle("is-playing", p);
   }
   function caption(i) {
     var c = CH[i], h, b, k;
     if (i === 0) { h = HOOK_CAP.h; b = HOOK_CAP.b; k = ""; }
     else if (i === CH.length - 1) { h = OUT_CAP.h; b = OUT_CAP.b; k = ""; }
-    else { h = c.h; b = c.b; k = '<p class="pcap__k">' + c.k + " — " + c.n + " <span>· " + B[c.brand].nameEn + "</span></p>"; }
+    else { h = c.h; b = c.b; k = '<p class="pcap__k">' + c.k + " — " + c.n + " <span>· " + B[c.brand].name + "</span></p>"; }
     capIn.classList.add("is-swap");
     setTimeout(function () {
       capIn.innerHTML = k + '<p class="pcap__h">' + esc(h) + '</p><p class="pcap__b">' + esc(b) + "</p>";
@@ -728,8 +728,8 @@
   });
   frame.addEventListener("keydown", function (e) {
     if (e.key === " " || e.key === "Enter" || e.key === "k") { e.preventDefault(); toggle(); }
-    else if (e.key === "ArrowRight") { e.preventDefault(); seek(tl.time() + 5); }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); seek(tl.time() - 5); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); seek(tl.time() + 5); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); seek(tl.time() - 5); }
   });
   document.getElementById("filmReplay").addEventListener("click", function (e) { e.stopPropagation(); ended = false; seek(0); userPaused = false; play(); });
   chapsEl.addEventListener("click", function (e) {
@@ -744,11 +744,11 @@
     for (var i = 0; i < segs.length; i++) {
       var sr = segs[i].getBoundingClientRect();
       if (x <= sr.right + 2 && x >= sr.left - 2) {
-        var p = (x - sr.left) / sr.width;
+        var p = (sr.right - x) / sr.width;
         return CH[i].t + Math.max(0, Math.min(1, p)) * (ends(i) - CH[i].t);
       }
     }
-    return x < r.left ? 0 : DUR - .01;
+    return x > r.right ? 0 : DUR - .01;
   }
   var dragging = false, wasPlaying = false;
   track.addEventListener("pointerdown", function (e) {
@@ -758,8 +758,8 @@
   track.addEventListener("pointermove", function (e) { if (dragging) seek(timeAt(e.clientX)); });
   track.addEventListener("pointerup", function () { dragging = false; if (wasPlaying) play(); else setPlayIcon(false); });
   track.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight") { e.preventDefault(); seek(tl.time() + 5); }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); seek(tl.time() - 5); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); seek(tl.time() + 5); }
+    else if (e.key === "ArrowRight") { e.preventDefault(); seek(tl.time() - 5); }
   });
 
   /* ---------- المقاس + ملء الشاشة ---------- */
