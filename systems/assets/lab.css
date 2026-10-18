@@ -14,6 +14,7 @@
 .lx__bm img{width:100%;height:100%;object-fit:cover}
 .lx__brands b{display:block;font-size:15px;font-weight:600;line-height:1.3}
 .lx__brands small{display:block;font-size:12px;color:var(--cap)}
+@media (max-width:1000px) and (min-width:721px){.lx__brands{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:720px){
   .lx__brands{display:flex;overflow-x:auto;scrollbar-width:none;margin-inline:calc(var(--gut)*-1);padding-inline:var(--gut);scroll-snap-type:x mandatory}
   .lx__brands::-webkit-scrollbar{display:none}
